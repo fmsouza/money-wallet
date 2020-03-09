@@ -7,7 +7,7 @@ export default {
       value: '$ {{value}}',
     },
     operations: {
-      statement: 'Statement',
+      statements: 'Statements',
       insights: 'Insights',
       deposit: 'Deposit',
       transfer: 'Transfer',
@@ -22,5 +22,9 @@ export default {
 
   settings: {
     title: 'Settings',
+  },
+
+  statements: {
+    title: 'Statements',
   },
 };

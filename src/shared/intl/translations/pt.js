@@ -7,7 +7,7 @@ export default {
       value: 'R$ {{value}}',
     },
     operations: {
-      statement: 'Extrato',
+      statements: 'Extrato',
       insights: 'Estatísticas',
       deposit: 'Depósitos',
       transfer: 'Transferências',
@@ -22,5 +22,9 @@ export default {
 
   settings: {
     title: 'Configurações',
+  },
+
+  statements: {
+    title: 'Extrato',
   },
 };

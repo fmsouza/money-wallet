@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     backgroundColor: theme.colors.border,
     height: 80,
-    margin: 10,
+    marginVertical: 10,
     paddingLeft: 20,
     paddingRight: 20,
     borderRadius: 10,
@@ -48,9 +48,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const Balance = ({ value }) => {
+export const Balance = ({ value, hideValue }) => {
   const styles = useStyles();
-  const [visible, setVisibility] = useState(false);
+  const [visible, setVisibility] = useState(!hideValue);
   const loc = useLocalization();
 
   const handleToggleVisibility = () => {
@@ -79,4 +79,9 @@ export const Balance = ({ value }) => {
 
 Balance.propTypes = {
   value: PropTypes.number.isRequired,
+  hideValue: PropTypes.bool,
+};
+
+Balance.defaultProps = {
+  hideValue: true,
 };

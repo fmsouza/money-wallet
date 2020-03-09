@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
   },
   container: {
+    padding: theme.padding,
     flex: 1,
     backgroundColor: theme.colors.background,
   },

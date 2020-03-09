@@ -7,10 +7,8 @@ import { Icon } from '~shared/widgets';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    marginTop: 10,
-    marginLeft: 5,
-    marginRight: 5,
-    marginBottom: 10,
+    marginTop: theme.margin,
+    marginHorizontal: theme.margin / 2,
     height: 80,
     width: 100,
     borderWidth: 2,

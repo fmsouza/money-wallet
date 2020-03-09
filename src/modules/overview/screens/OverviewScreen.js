@@ -5,14 +5,11 @@ import { useNavigation, useTheme } from '@react-navigation/native';
 import { useLocalization } from '~shared/intl';
 import { makeStyles } from '~shared/styles';
 import { Container, Icon } from '~shared/widgets';
+import { StatementsScreen } from '~modules/history/screens';
+import { Balance } from '~modules/history/widgets';
+import { InsightsSlider, OperationItem } from '~modules/overview/widgets';
 import { ProfileScreen } from '~modules/profile/screens';
 import { SettingsScreen } from '~modules/settings/screens';
-
-import {
-  Balance,
-  InsightsSlider,
-  OperationItem,
-} from '~modules/overview/widgets';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -20,6 +17,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
+    flex: 1,
   },
   rightHeaderContainer: {
     marginRight: 10,
@@ -32,6 +30,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     flex: 1,
   },
+  balanceWrapper: {
+    width: '100%',
+    paddingHorizontal: theme.padding,
+  },
   contentContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -41,11 +43,9 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     flex: 1,
   },
-  operationContentContainer: {
-    borderTopWidth: 1,
-  },
   footer: {
     height: 100,
+    paddingHorizontal: theme.padding / 2,
   },
 }));
 
@@ -71,19 +71,21 @@ export const OverviewScreen = () => {
   }, [colors.text, loc, navigation, styles.rightHeaderContainer]);
 
   return (
-    <Container style={styles.container}>
-      <View style={styles.content}>
-        <Balance value={200.55} />
-        <InsightsSlider />
-      </View>
+    <View style={styles.container}>
+      <Container>
+        <View style={styles.content}>
+          <View style={styles.balanceWrapper}>
+            <Balance value={200.55} />
+          </View>
+          <InsightsSlider />
+        </View>
+      </Container>
       <View style={styles.footer}>
-        <ScrollView
-          contentContainerStyle={styles.operationContentContainer}
-          horizontal={true}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <OperationItem
-            title={loc.t('overview.operations.statement')}
+            title={loc.t('overview.operations.statements')}
             icon="format-list-bulleted"
-            onPress={() => {}}
+            onPress={() => navigation.navigate(StatementsScreen.route)}
           />
           <OperationItem
             title={loc.t('overview.operations.insights')}
@@ -112,7 +114,7 @@ export const OverviewScreen = () => {
           />
         </ScrollView>
       </View>
-    </Container>
+    </View>
   );
 };
 

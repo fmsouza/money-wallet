@@ -38,5 +38,7 @@ export default merge(
   {
     dark: darkMode,
     colors: { ...Color },
+    margin: 8,
+    padding: 8,
   },
 );
