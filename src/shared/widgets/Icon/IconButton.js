@@ -20,7 +20,7 @@ IconButton.propTypes = {
 };
 
 IconButton.defaultProps = {
-  size: 24,
+  size: 32,
   color: 'black',
   type: '',
 };

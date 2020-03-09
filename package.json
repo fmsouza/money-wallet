@@ -4,6 +4,10 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:build": "cd android && ./gradlew assembleDebug && cd .. && cp android/app/build/outputs/apk/debug/app-debug.apk MoneyWallet.apk",
+    "android:bundle": "react-native bundle --dev false --platform android --entry-file index.js --bundle-output ./android/app/build/intermediates/assets/debug/index.android.bundle --assets-dest ./android/app/build/intermediates/res/merged/debug",
+    "android:clean": "cd android && ./gradlew clean && cd ..",
+    "android:generate-apk": "npm run android:bundle && npm run android:build",
     "logcat": "adb logcat *:S ReactNative:V ReactNativeJS:V",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -15,6 +19,7 @@
     "@react-navigation/native": "5.0.9",
     "@react-navigation/stack": "5.1.1",
     "color": "3.1.2",
+    "i18n-js": "^3.5.1",
     "lodash": "4.17.15",
     "prop-types": "15.7.2",
     "react": "16.9.0",
@@ -23,6 +28,7 @@
     "react-native-reanimated": "1.7.0",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "2.2.0",
+    "react-native-sideswipe": "^1.5.0",
     "react-native-vector-icons": "6.6.0"
   },
   "devDependencies": {

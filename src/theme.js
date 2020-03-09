@@ -23,9 +23,11 @@ export const statusBarTheme = {
 
 export const headerTheme = {
   headerStyle: {
-    backgroundColor: Color.primary,
+    backgroundColor: Color.backgroud,
+    shadowOpacity: 0,
+    elevation: 0,
   },
-  headerTintColor: Color.white,
+  headerTintColor: Color.text,
   headerTitleStyle: {
     fontWeight: 'bold',
   },
@@ -36,12 +38,5 @@ export default merge(
   {
     dark: darkMode,
     colors: { ...Color },
-    header: {
-      background: Color.primary,
-      tint: Color.white,
-      titleStyle: {
-        fontWeight: 'bold',
-      },
-    },
   },
 );

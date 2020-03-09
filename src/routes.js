@@ -1,6 +1,7 @@
-import { HomeScreen } from './HomeScreen';
-import { SecondScreen } from './SecondScreen';
+import { OverviewScreen } from '~modules/overview/screens';
+import { ProfileScreen } from '~modules/profile/screens';
+import { SettingsScreen } from '~modules/settings/screens';
 
-export const initialScreen = HomeScreen;
+export const initialScreen = OverviewScreen;
 
-export const screens = [HomeScreen, SecondScreen];
+export const screens = [OverviewScreen, ProfileScreen, SettingsScreen];

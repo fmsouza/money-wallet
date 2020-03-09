@@ -6,11 +6,12 @@ import { StatusBar } from 'react-native';
 
 import { initialScreen, screens } from '~app/routes';
 import theme, { headerTheme, statusBarTheme } from '~app/theme';
+import { LocalizationProvider } from '~shared/intl';
 
 const Stack = createStackNavigator();
 
-export default () => {
-  return (
+export default () => (
+  <LocalizationProvider>
     <NavigationContainer theme={theme}>
       <StatusBar {...statusBarTheme} />
       <Stack.Navigator initialRouteName={initialScreen.route}>
@@ -24,5 +25,5 @@ export default () => {
         ))}
       </Stack.Navigator>
     </NavigationContainer>
-  );
-};
+  </LocalizationProvider>
+);
