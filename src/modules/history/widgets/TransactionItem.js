@@ -51,7 +51,7 @@ const getIcon = category => {
     case 'services':
       return 'build';
     case 'market':
-      return 'add-shopping-cart';
+      return 'local-grocery-store';
     case 'shopping':
       return 'local-mall';
     case 'restaurants':
