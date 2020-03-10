@@ -21,6 +21,12 @@ export const SettingsScreen = () => {
     <Container>
       <ScrollView>
         <ListItem
+          title="Security"
+          subtitle="Manage your account security"
+          icon="shield-key"
+          onPress={() => {}}
+        />
+        <ListItem
           title="Localization"
           subtitle="Language & Currency"
           icon="language"
