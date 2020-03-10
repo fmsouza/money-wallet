@@ -3,20 +3,9 @@ import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useLocalization } from '~shared/intl';
-import { makeStyles } from '~shared/styles';
-import { Container } from '~shared/widgets';
-
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-}));
+import { Container, ListItem } from '~shared/widgets';
 
 export const SettingsScreen = () => {
-  const styles = useStyles();
   const loc = useLocalization();
   const navigation = useNavigation();
 
@@ -27,8 +16,22 @@ export const SettingsScreen = () => {
   }, [loc, navigation]);
 
   return (
-    <Container style={styles.container}>
-      <ScrollView />
+    <Container>
+      <ScrollView>
+        <ListItem
+          title="Localization"
+          subtitle="Language & Currency"
+          icon="language"
+          iconType="md"
+          onPress={() => {}}
+        />
+        <ListItem
+          title="About"
+          subtitle="About the app"
+          icon="information"
+          onPress={() => {}}
+        />
+      </ScrollView>
     </Container>
   );
 };

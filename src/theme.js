@@ -1,6 +1,9 @@
+import { Dimensions } from 'react-native';
 import merge from 'lodash/merge';
 import color from 'color';
 import { DefaultTheme } from '@react-navigation/native';
+
+const { width: maxWidth, height: maxHeight } = Dimensions.get('window');
 
 const darkMode = false;
 
@@ -40,5 +43,7 @@ export default merge(
     colors: { ...Color },
     margin: 8,
     padding: 8,
+    maxWidth,
+    maxHeight,
   },
 );
