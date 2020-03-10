@@ -51,7 +51,7 @@ export const ListItem = ({ title, subtitle, icon, iconType, onPress }) => {
         )}
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.subtitle}>{subtitle}</Text>
+          {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
         </View>
       </View>
     </TouchableWithoutFeedback>

@@ -1,10 +1,10 @@
 import React, { useLayoutEffect } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useLocalization } from '~shared/intl';
 import { makeStyles } from '~shared/styles';
-import { Container } from '~shared/widgets';
+import { Container, ListItem } from '~shared/widgets';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -12,6 +12,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+  },
+  greeting: {
+    fontSize: 24,
+    padding: theme.padding,
   },
 }));
 
@@ -28,7 +32,20 @@ export const ProfileScreen = () => {
 
   return (
     <Container style={styles.container}>
-      <ScrollView />
+      <ScrollView>
+        <Text style={styles.greeting}>What do you need?</Text>
+        <ListItem
+          title="Export statements"
+          icon="file-table"
+          onPress={() => {}}
+        />
+        <ListItem
+          title="Reset account"
+          subtitle="Clear all the memory"
+          icon="bank-remove"
+          onPress={() => {}}
+        />
+      </ScrollView>
     </Container>
   );
 };

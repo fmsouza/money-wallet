@@ -8,6 +8,7 @@ import { Container, Icon } from '~shared/widgets';
 import { StatementsScreen } from '~modules/history/screens';
 import { Balance } from '~modules/history/widgets';
 import { InsightsSlider, OperationItem } from '~modules/overview/widgets';
+import { HelpScreen } from '~modules/support/screens';
 import { ProfileScreen } from '~modules/profile/screens';
 import { SettingsScreen } from '~modules/settings/screens';
 
@@ -105,7 +106,7 @@ export const OverviewScreen = () => {
           <OperationItem
             title={loc.t('overview.operations.help')}
             icon="comment-text-outline"
-            onPress={() => {}}
+            onPress={() => navigation.navigate(HelpScreen.route)}
           />
           <OperationItem
             title={loc.t('overview.operations.settings')}
