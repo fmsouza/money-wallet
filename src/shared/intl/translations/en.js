@@ -17,7 +17,7 @@ export default {
   },
 
   profile: {
-    title: 'Profile',
+    title: 'My Account',
   },
 
   settings: {

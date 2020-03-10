@@ -1,10 +1,11 @@
 import React, { useLayoutEffect } from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useLocalization } from '~shared/intl';
 import { makeStyles } from '~shared/styles';
 import { Container, ListItem } from '~shared/widgets';
+import { AccountDetails } from '~modules/profile/widgets';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -33,7 +34,18 @@ export const ProfileScreen = () => {
   return (
     <Container style={styles.container}>
       <ScrollView>
-        <Text style={styles.greeting}>What do you need?</Text>
+        <AccountDetails
+          bankName="National Bank"
+          bankNumber="340"
+          accountNumber="32455-3"
+          routingNumber="0001"
+        />
+        <ListItem
+          title="Share account details"
+          icon="share"
+          iconType="md"
+          onPress={() => {}}
+        />
         <ListItem
           title="Export statements"
           icon="file-table"
