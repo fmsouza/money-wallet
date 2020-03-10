@@ -26,6 +26,13 @@ export const SettingsScreen = () => {
           onPress={() => {}}
         />
         <ListItem
+          title="Notifications"
+          subtitle="Configure your push notifications"
+          icon="notifications"
+          iconType="md"
+          onPress={() => {}}
+        />
+        <ListItem
           title="About"
           subtitle="About the app"
           icon="information"
