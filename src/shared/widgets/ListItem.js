@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import color from 'color';
 import { makeStyles } from '~shared/styles';
 import { Icon } from '~shared/widgets';
+import { Switch } from 'react-native-gesture-handler';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -11,11 +12,20 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     paddingHorizontal: theme.padding,
     borderBottomWidth: 1,
     borderColor: theme.colors.border,
     width: theme.maxWidth,
+  },
+  leftColumn: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  rightColumn: {
+    paddingRight: theme.padding * 2,
   },
   iconContainer: {
     marginRight: theme.margin,
@@ -39,20 +49,45 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const ListItem = ({ title, subtitle, icon, iconType, onPress }) => {
+export const ListItem = ({
+  title,
+  subtitle,
+  icon,
+  iconType,
+  onPress,
+  onToggle,
+  toggleInitialValue,
+}) => {
   const styles = useStyles();
+  const [toggleValue, setToggleValue] = useState(toggleInitialValue);
+
+  useEffect(() => {
+    setToggleValue(toggleInitialValue);
+  }, [toggleInitialValue]);
+
+  const handleValueChange = () => {
+    setToggleValue(v => !v);
+  };
+
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
-        {icon && (
-          <View style={styles.iconContainer}>
-            <Icon name={icon} type={iconType} size={32} />
+        <View style={styles.leftColumn}>
+          {icon && (
+            <View style={styles.iconContainer}>
+              <Icon name={icon} type={iconType} size={32} />
+            </View>
+          )}
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>{title}</Text>
+            {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+          </View>
+        </View>
+        {onToggle && (
+          <View style={styles.rightColumn}>
+            <Switch value={toggleValue} onValueChange={handleValueChange} />
           </View>
         )}
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>{title}</Text>
-          {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
-        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -63,5 +98,13 @@ ListItem.propTypes = {
   subtitle: PropTypes.string,
   icon: PropTypes.string,
   iconType: PropTypes.string,
-  onPress: PropTypes.func.isRequired,
+  onPress: PropTypes.func,
+  onToggle: PropTypes.func,
+  toggleInitialValue: PropTypes.bool,
+};
+
+ListItem.defaultProps = {
+  onPress: () => {},
+  onToggle: null,
+  toggleInitialValue: false,
 };

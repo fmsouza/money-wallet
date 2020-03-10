@@ -15,6 +15,8 @@ export const SettingsScreen = () => {
     });
   }, [loc, navigation]);
 
+  const handleDarkModeToggle = value => {};
+
   return (
     <Container>
       <ScrollView>
@@ -31,6 +33,13 @@ export const SettingsScreen = () => {
           icon="notifications"
           iconType="md"
           onPress={() => {}}
+        />
+        <ListItem
+          title="Dark mode"
+          subtitle="Toggle dark mode"
+          icon="brightness-4"
+          iconType="md"
+          onToggle={handleDarkModeToggle}
         />
         <ListItem
           title="About"
