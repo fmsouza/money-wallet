@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import { ScrollView, View } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
 import { useNavigation, useTheme } from '@react-navigation/native';
 
 import { useLocalization } from '~shared/intl';
@@ -71,6 +71,10 @@ export const OverviewScreen = () => {
     });
   }, [colors.text, loc, navigation, styles.rightHeaderContainer]);
 
+  const onHandleNotImplemented = () => {
+    Alert.alert('Not implemented', 'This action was not implemented yet.');
+  };
+
   return (
     <View style={styles.container}>
       <Container>
@@ -91,17 +95,17 @@ export const OverviewScreen = () => {
           <OperationItem
             title={loc.t('overview.operations.insights')}
             icon="finance"
-            onPress={() => {}}
+            onPress={onHandleNotImplemented}
           />
           <OperationItem
             title={loc.t('overview.operations.deposit')}
             icon="bank-transfer-in"
-            onPress={() => {}}
+            onPress={onHandleNotImplemented}
           />
           <OperationItem
             title={loc.t('overview.operations.transfer')}
             icon="bank-transfer-out"
-            onPress={() => {}}
+            onPress={onHandleNotImplemented}
           />
           <OperationItem
             title={loc.t('overview.operations.help')}

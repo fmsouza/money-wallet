@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import { ScrollView } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useLocalization } from '~shared/intl';
@@ -17,6 +17,10 @@ export const SettingsScreen = () => {
 
   const handleDarkModeToggle = value => {};
 
+  const onHandleNotImplemented = () => {
+    Alert.alert('Not implemented', 'This action was not implemented yet.');
+  };
+
   return (
     <Container>
       <ScrollView>
@@ -24,21 +28,21 @@ export const SettingsScreen = () => {
           title="Security"
           subtitle="Manage your account security"
           icon="shield-key"
-          onPress={() => {}}
+          onPress={onHandleNotImplemented}
         />
         <ListItem
           title="Localization"
           subtitle="Language & Currency"
           icon="language"
           iconType="md"
-          onPress={() => {}}
+          onPress={onHandleNotImplemented}
         />
         <ListItem
           title="Notifications"
           subtitle="Configure your push notifications"
           icon="notifications"
           iconType="md"
-          onPress={() => {}}
+          onPress={onHandleNotImplemented}
         />
         <ListItem
           title="Dark mode"
@@ -51,7 +55,7 @@ export const SettingsScreen = () => {
           title="About"
           subtitle="About the app"
           icon="information"
-          onPress={() => {}}
+          onPress={onHandleNotImplemented}
         />
       </ScrollView>
     </Container>

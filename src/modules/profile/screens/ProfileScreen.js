@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import { ScrollView } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useLocalization } from '~shared/intl';
@@ -31,6 +31,10 @@ export const ProfileScreen = () => {
     });
   }, [loc, navigation]);
 
+  const onHandleNotImplemented = () => {
+    Alert.alert('Not implemented', 'This action was not implemented yet.');
+  };
+
   return (
     <Container style={styles.container}>
       <ScrollView>
@@ -44,18 +48,18 @@ export const ProfileScreen = () => {
           title="Share account details"
           icon="share"
           iconType="md"
-          onPress={() => {}}
+          onPress={onHandleNotImplemented}
         />
         <ListItem
           title="Export statements"
           icon="file-table"
-          onPress={() => {}}
+          onPress={onHandleNotImplemented}
         />
         <ListItem
           title="Reset account"
           subtitle="Clear all the memory"
           icon="bank-remove"
-          onPress={() => {}}
+          onPress={onHandleNotImplemented}
         />
       </ScrollView>
     </Container>
