@@ -6,7 +6,7 @@ import { StatusBar } from 'react-native';
 
 import { initialScreen, screens } from '~app/routes';
 import theme, { headerTheme, statusBarTheme } from '~app/theme';
-import { LocalizationProvider } from './src/shared/intl/provider';
+import { LocalizationProvider } from '~shared/providers';
 
 const Stack = createStackNavigator();
 

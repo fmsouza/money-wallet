@@ -1,4 +1,4 @@
-import { useLocale as useSharedLocale } from '~shared/intl';
+import { useLocale as useSharedLocale } from '~shared/providers';
 import en from './en';
 import pt from './pt';
 
