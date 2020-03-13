@@ -25,35 +25,35 @@ export const SettingsScreen = () => {
     <Container>
       <ScrollView>
         <ListItem
-          title="Security"
-          subtitle="Manage your account security"
+          title={getText('settings.items.security.title')}
+          subtitle={getText('settings.items.security.subtitle')}
           icon="shield-key"
           onPress={onHandleNotImplemented}
         />
         <ListItem
-          title="Localization"
-          subtitle="Language & Currency"
+          title={getText('settings.items.localization.title')}
+          subtitle={getText('settings.items.localization.subtitle')}
           icon="language"
           iconType="md"
           onPress={onHandleNotImplemented}
         />
         <ListItem
-          title="Notifications"
-          subtitle="Configure your push notifications"
+          title={getText('settings.items.notifications.title')}
+          subtitle={getText('settings.items.notifications.subtitle')}
           icon="notifications"
           iconType="md"
           onPress={onHandleNotImplemented}
         />
         <ListItem
-          title="Dark mode"
-          subtitle="Toggle dark mode"
+          title={getText('settings.items.darkMode.title')}
+          subtitle={getText('settings.items.darkMode.subtitle')}
           icon="brightness-4"
           iconType="md"
           onToggle={handleDarkModeToggle}
         />
         <ListItem
-          title="About"
-          subtitle="About the app"
+          title={getText('settings.items.about.title')}
+          subtitle={getText('settings.items.about.subtitle')}
           icon="information"
           onPress={onHandleNotImplemented}
         />
