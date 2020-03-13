@@ -3,6 +3,8 @@ import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { makeStyles } from '~shared/styles';
 
+import { useLocale } from '~modules/profile/intl';
+
 const useStyles = makeStyles(theme => ({
   container: {
     backgroundColor: theme.colors.border,
@@ -44,11 +46,14 @@ export const AccountDetails = ({
   bankNumber,
 }) => {
   const styles = useStyles();
+  const { getText } = useLocale();
 
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Text style={styles.description}>Account details:</Text>
+        <Text style={styles.description}>
+          {getText('profile.accountDetails.title')}
+        </Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.label}>{bankName}</Text>
@@ -56,7 +61,13 @@ export const AccountDetails = ({
       </View>
       <View style={styles.row}>
         <Text style={styles.label}>{accountNumber}</Text>
-        <Text style={styles.label}> • Routing number: {routingNumber}</Text>
+        <Text style={styles.label}>
+          {' '}
+          •{' '}
+          {getText('profile.accountDetails.routingLabel', {
+            value: routingNumber,
+          })}
+        </Text>
       </View>
     </View>
   );

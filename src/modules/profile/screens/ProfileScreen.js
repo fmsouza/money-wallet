@@ -45,19 +45,19 @@ export const ProfileScreen = () => {
           routingNumber="0001"
         />
         <ListItem
-          title="Share account details"
+          title={getText('profile.shareAccount.title')}
           icon="share"
           iconType="md"
           onPress={onHandleNotImplemented}
         />
         <ListItem
-          title="Export statements"
+          title={getText('profile.exportStatements.title')}
           icon="file-table"
           onPress={onHandleNotImplemented}
         />
         <ListItem
-          title="Reset account"
-          subtitle="Clear all the memory"
+          title={getText('profile.resetAccount.title')}
+          subtitle={getText('profile.resetAccount.subtitle')}
           icon="bank-remove"
           onPress={onHandleNotImplemented}
         />
