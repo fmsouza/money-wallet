@@ -3,17 +3,19 @@ import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Container, Expandable } from '~shared/widgets';
+import { useLocale } from '~modules/support/intl';
 
 import { DUMMY_FAQ } from './dummy';
 
 export const HelpScreen = props => {
   const navigation = useNavigation();
+  const { getText } = useLocale();
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'How can we help you?',
+      title: getText('support.title'),
     });
-  }, [navigation]);
+  }, [getText, navigation]);
 
   return (
     <Container>
