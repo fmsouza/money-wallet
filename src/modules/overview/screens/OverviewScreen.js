@@ -2,9 +2,10 @@ import React, { useLayoutEffect } from 'react';
 import { Alert, ScrollView, View } from 'react-native';
 import { useNavigation, useTheme } from '@react-navigation/native';
 
-import { useLocalization } from '~shared/intl';
 import { makeStyles } from '~shared/styles';
 import { Container, Icon } from '~shared/widgets';
+
+import { useLocale } from '~modules/overview/intl';
 import { StatementsScreen } from '~modules/history/screens';
 import { Balance } from '~modules/history/widgets';
 import { InsightsSlider, OperationItem } from '~modules/overview/widgets';
@@ -53,12 +54,12 @@ const useStyles = makeStyles(theme => ({
 export const OverviewScreen = () => {
   const styles = useStyles();
   const { colors } = useTheme();
-  const loc = useLocalization();
+  const { getText } = useLocale();
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: loc.t('overview.greeting', { name: 'Fred' }),
+      title: getText('overview.greeting', { name: 'Fred' }),
       headerRight: () => (
         <View style={styles.rightHeaderContainer}>
           <Icon.Button
@@ -69,7 +70,7 @@ export const OverviewScreen = () => {
         </View>
       ),
     });
-  }, [colors.text, loc, navigation, styles.rightHeaderContainer]);
+  }, [colors.text, getText, navigation, styles.rightHeaderContainer]);
 
   const onHandleNotImplemented = () => {
     Alert.alert('Not implemented', 'This action was not implemented yet.');
@@ -88,32 +89,32 @@ export const OverviewScreen = () => {
       <View style={styles.footer}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <OperationItem
-            title={loc.t('overview.operations.statements')}
+            title={getText('overview.operations.statements')}
             icon="format-list-bulleted"
             onPress={() => navigation.navigate(StatementsScreen.route)}
           />
           <OperationItem
-            title={loc.t('overview.operations.insights')}
+            title={getText('overview.operations.insights')}
             icon="finance"
             onPress={onHandleNotImplemented}
           />
           <OperationItem
-            title={loc.t('overview.operations.deposit')}
+            title={getText('overview.operations.deposit')}
             icon="bank-transfer-in"
             onPress={onHandleNotImplemented}
           />
           <OperationItem
-            title={loc.t('overview.operations.transfer')}
+            title={getText('overview.operations.transfer')}
             icon="bank-transfer-out"
             onPress={onHandleNotImplemented}
           />
           <OperationItem
-            title={loc.t('overview.operations.help')}
+            title={getText('overview.operations.help')}
             icon="comment-text-outline"
             onPress={() => navigation.navigate(HelpScreen.route)}
           />
           <OperationItem
-            title={loc.t('overview.operations.settings')}
+            title={getText('overview.operations.settings')}
             icon="settings"
             onPress={() => navigation.navigate(SettingsScreen.route)}
           />

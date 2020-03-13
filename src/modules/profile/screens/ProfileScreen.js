@@ -2,9 +2,9 @@ import React, { useLayoutEffect } from 'react';
 import { Alert, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { useLocalization } from '~shared/intl';
 import { makeStyles } from '~shared/styles';
 import { Container, ListItem } from '~shared/widgets';
+import { useLocale } from '~modules/profile/intl';
 import { AccountDetails } from '~modules/profile/widgets';
 
 const useStyles = makeStyles(theme => ({
@@ -22,14 +22,14 @@ const useStyles = makeStyles(theme => ({
 
 export const ProfileScreen = () => {
   const styles = useStyles();
-  const loc = useLocalization();
+  const { getText } = useLocale();
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: loc.t('profile.title'),
+      title: getText('profile.title'),
     });
-  }, [loc, navigation]);
+  }, [getText, navigation]);
 
   const onHandleNotImplemented = () => {
     Alert.alert('Not implemented', 'This action was not implemented yet.');

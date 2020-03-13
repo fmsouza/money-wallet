@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { useLocalization } from '~shared/intl';
 import { Icon } from '~shared/widgets';
 import { makeStyles } from '~shared/styles';
+
+import { useLocale } from '~modules/history/intl';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -51,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 export const Balance = ({ value, hideValue }) => {
   const styles = useStyles();
   const [visible, setVisibility] = useState(!hideValue);
-  const loc = useLocalization();
+  const { getText } = useLocale();
 
   const handleToggleVisibility = () => {
     setVisibility(v => !v);
@@ -59,10 +60,10 @@ export const Balance = ({ value, hideValue }) => {
   return (
     <View style={styles.container}>
       <View style={styles.leftColumn}>
-        <Text style={styles.title}>{loc.t('overview.balance.label')}</Text>
+        <Text style={styles.title}>{getText('history.balance.label')}</Text>
         {visible && (
           <Text style={styles.balance}>
-            {loc.t('overview.balance.value', { value })}
+            {getText('history.balance.value', { value })}
           </Text>
         )}
         {!visible && <View style={styles.placeholder} />}

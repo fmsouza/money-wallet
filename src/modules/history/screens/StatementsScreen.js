@@ -1,10 +1,11 @@
 import React, { useLayoutEffect } from 'react';
-import { FlatList, ScrollView } from 'react-native';
+import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { useLocalization } from '~shared/intl';
 import { makeStyles } from '~shared/styles';
 import { Container } from '~shared/widgets';
+
+import { useLocale } from '~modules/history/intl';
 import { Balance, TransactionItem } from '~modules/history/widgets';
 
 import { DUMMY_TRANSACTIONS } from './dummy';
@@ -23,14 +24,14 @@ const useStyles = makeStyles(theme => ({
 
 export const StatementsScreen = () => {
   const styles = useStyles();
-  const loc = useLocalization();
+  const { getText } = useLocale();
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: loc.t('statements.title'),
+      title: getText('history.title'),
     });
-  }, [loc, navigation]);
+  }, [getText, navigation]);
 
   return (
     <Container style={styles.container}>

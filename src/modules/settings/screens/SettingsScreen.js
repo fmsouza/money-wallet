@@ -2,18 +2,18 @@ import React, { useLayoutEffect } from 'react';
 import { Alert, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { useLocalization } from '~shared/intl';
 import { Container, ListItem } from '~shared/widgets';
+import { useLocale } from '~modules/settings/intl';
 
 export const SettingsScreen = () => {
-  const loc = useLocalization();
+  const { getText } = useLocale();
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: loc.t('settings.title'),
+      title: getText('settings.title'),
     });
-  }, [loc, navigation]);
+  }, [getText, navigation]);
 
   const handleDarkModeToggle = value => {};
 
