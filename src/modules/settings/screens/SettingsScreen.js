@@ -2,10 +2,12 @@ import React, { useLayoutEffect } from 'react';
 import { Alert, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import { useDarkMode } from '~shared/providers';
 import { Container, ListItem } from '~shared/widgets';
 import { useLocale } from '~modules/settings/intl';
 
 export const SettingsScreen = () => {
+  const { darkMode, enableDarkMode } = useDarkMode();
   const { getText } = useLocale();
   const navigation = useNavigation();
 
@@ -15,7 +17,7 @@ export const SettingsScreen = () => {
     });
   }, [getText, navigation]);
 
-  const handleDarkModeToggle = value => {};
+  const handleDarkModeToggle = value => enableDarkMode(value);
 
   const onHandleNotImplemented = () => {
     Alert.alert('Not implemented', 'This action was not implemented yet.');
@@ -50,6 +52,7 @@ export const SettingsScreen = () => {
           icon="brightness-4"
           iconType="md"
           onToggle={handleDarkModeToggle}
+          toggleValue={darkMode}
         />
         <ListItem
           title={getText('settings.items.about.title')}

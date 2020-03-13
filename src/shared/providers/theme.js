@@ -4,9 +4,17 @@ import { lightTheme, darkTheme } from '~app/theme';
 
 const getTheme = darkModeEnabled => (darkModeEnabled ? darkTheme : lightTheme);
 
-const ThemeContext = React.createContext(lightTheme);
+const ThemeContext = React.createContext({});
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = () => {
+  const { theme } = useContext(ThemeContext);
+  return { theme };
+};
+
+export const useDarkMode = () => {
+  const { darkMode, enableDarkMode } = useContext(ThemeContext);
+  return { darkMode, enableDarkMode };
+};
 
 export const ThemeProvider = ({ children }) => {
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
@@ -17,11 +25,11 @@ export const ThemeProvider = ({ children }) => {
     setTheme(newTheme);
   }, [darkModeEnabled]);
 
-  const themeContext = useMemo(() => {
-    const enableDarkMode = enable => setDarkModeEnabled(Boolean(enable));
-    const darkMode = darkModeEnabled;
-    return { darkMode, enableDarkMode, theme };
-  }, [darkModeEnabled, theme]);
+  const themeContext = {
+    enableDarkMode: enable => setDarkModeEnabled(Boolean(enable)),
+    darkMode: darkModeEnabled,
+    theme,
+  };
 
   return (
     <ThemeContext.Provider value={themeContext}>

@@ -55,18 +55,9 @@ export const ListItem = ({
   iconType,
   onPress,
   onToggle,
-  toggleInitialValue,
+  toggleValue,
 }) => {
   const styles = useStyles();
-  const [toggleValue, setToggleValue] = useState(toggleInitialValue);
-
-  useEffect(() => {
-    setToggleValue(toggleInitialValue);
-  }, [toggleInitialValue]);
-
-  const handleValueChange = () => {
-    setToggleValue(v => !v);
-  };
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
@@ -84,7 +75,7 @@ export const ListItem = ({
         </View>
         {onToggle && (
           <View style={styles.rightColumn}>
-            <Switch value={toggleValue} onValueChange={handleValueChange} />
+            <Switch value={toggleValue} onValueChange={onToggle} />
           </View>
         )}
       </View>
@@ -99,11 +90,11 @@ ListItem.propTypes = {
   iconType: PropTypes.string,
   onPress: PropTypes.func,
   onToggle: PropTypes.func,
-  toggleInitialValue: PropTypes.bool,
+  toggleValue: PropTypes.bool,
 };
 
 ListItem.defaultProps = {
   onPress: () => {},
   onToggle: null,
-  toggleInitialValue: false,
+  toggleValue: false,
 };
