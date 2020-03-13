@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import { useTheme } from '~shared/providers';
 
 export const makeStyles = fn => () => {
-  const theme = useTheme();
+  const { theme } = useTheme();
   return StyleSheet.create(fn(theme));
 };

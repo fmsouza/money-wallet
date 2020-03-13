@@ -5,8 +5,6 @@ import { DefaultTheme } from '@react-navigation/native';
 
 const { width: maxWidth, height: maxHeight } = Dimensions.get('window');
 
-const darkMode = false;
-
 export const Color = {
   primary: '#074F57',
   secondary: '#D4C2FC',
@@ -16,34 +14,33 @@ export const Color = {
   black: '#000000',
 };
 
-export const statusBarTheme = {
-  barStyle: 'light-content',
-  backgroundColor: color(Color.primary)
-    .darken(0.4)
-    .hex()
-    .toString(),
-};
-
-export const headerTheme = {
-  headerStyle: {
-    backgroundColor: Color.backgroud,
-    shadowOpacity: 0,
-    elevation: 0,
-  },
-  headerTintColor: Color.text,
-  headerTitleStyle: {
-    fontWeight: 'bold',
-  },
-};
-
-export default merge(
+export const lightTheme = merge(
   { ...DefaultTheme },
   {
-    dark: darkMode,
     colors: { ...Color },
     margin: 8,
     padding: 8,
     maxWidth,
     maxHeight,
+    statusBar: {
+      barStyle: 'light-content',
+      backgroundColor: color(Color.primary)
+        .darken(0.4)
+        .hex()
+        .toString(),
+    },
+    navbar: {
+      headerStyle: {
+        backgroundColor: Color.backgroud,
+        shadowOpacity: 0,
+        elevation: 0,
+      },
+      headerTintColor: Color.text,
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
   },
 );
+
+export const darkTheme = lightTheme;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import { useTheme } from '~shared/providers';
 
 import { makeStyles } from '~shared/styles';
 import { Icon } from '~shared/widgets';
@@ -69,7 +69,7 @@ const getIcon = category => {
 
 export const TransactionItem = ({ tx }) => {
   const styles = useStyles();
-  const { colors } = useTheme();
+  const { theme } = useTheme();
   return (
     <View style={styles.container}>
       <View style={styles.leftColumn}>
@@ -77,7 +77,7 @@ export const TransactionItem = ({ tx }) => {
           <Icon
             name={getIcon(tx.category)}
             size={24}
-            color={colors.white}
+            color={theme.colors.white}
             type="md"
           />
         </View>

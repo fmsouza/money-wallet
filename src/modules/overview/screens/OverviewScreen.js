@@ -1,7 +1,8 @@
 import React, { useLayoutEffect } from 'react';
 import { Alert, ScrollView, View } from 'react-native';
-import { useNavigation, useTheme } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
+import { useTheme } from '~shared/providers';
 import { makeStyles } from '~shared/styles';
 import { Container, Icon } from '~shared/widgets';
 
@@ -53,7 +54,7 @@ const useStyles = makeStyles(theme => ({
 
 export const OverviewScreen = () => {
   const styles = useStyles();
-  const { colors } = useTheme();
+  const { theme } = useTheme();
   const { getText } = useLocale();
   const navigation = useNavigation();
 
@@ -64,13 +65,13 @@ export const OverviewScreen = () => {
         <View style={styles.rightHeaderContainer}>
           <Icon.Button
             name="account-circle"
-            color={colors.text}
+            color={theme.colors.text}
             onPress={() => navigation.navigate(ProfileScreen.route)}
           />
         </View>
       ),
     });
-  }, [colors.text, getText, navigation, styles.rightHeaderContainer]);
+  }, [theme.colors.text, getText, navigation, styles.rightHeaderContainer]);
 
   const onHandleNotImplemented = () => {
     Alert.alert('Not implemented', 'This action was not implemented yet.');

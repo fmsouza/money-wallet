@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { makeStyles } from '~shared/styles';
 
+import { makeStyles } from '~shared/styles';
 import { useLocale } from '~modules/profile/intl';
 
 const useStyles = makeStyles(theme => ({

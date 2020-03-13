@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Switch, Text, TouchableWithoutFeedback, View } from 'react-native';
 import color from 'color';
 import { makeStyles } from '~shared/styles';
 import { Icon } from '~shared/widgets';
-import { Switch } from 'react-native-gesture-handler';
 
 const useStyles = makeStyles(theme => ({
   container: {

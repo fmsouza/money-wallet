@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Dimensions, View } from 'react-native';
 import SideSwipe from 'react-native-sideswipe';
 
