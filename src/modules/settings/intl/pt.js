@@ -8,7 +8,7 @@ export default {
       },
       localization: {
         title: 'Linguagem',
-        subtitle: 'Idioma & Moeda',
+        subtitle: 'Idioma e moeda',
       },
       notifications: {
         title: 'Notificações',
@@ -21,6 +21,18 @@ export default {
       about: {
         title: 'Sobre',
         subtitle: 'Sobre o app',
+      },
+    },
+  },
+
+  localization: {
+    title: 'Idioma e Moeda',
+    items: {
+      language: {
+        title: 'Selecione o idioma',
+      },
+      currency: {
+        title: 'Selecione a moeda',
       },
     },
   },

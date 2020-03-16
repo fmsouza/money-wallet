@@ -7,7 +7,7 @@ import { useTheme } from '~shared/providers';
 import { HelpScreen } from '~modules/support/screens';
 import { OverviewScreen } from '~modules/overview/screens';
 import { ProfileScreen } from '~modules/profile/screens';
-import { SettingsScreen } from '~modules/settings/screens';
+import { LocalizationScreen, SettingsScreen } from '~modules/settings/screens';
 import { StatementsScreen } from '~modules/history/screens';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -17,6 +17,7 @@ export const initialScreen = OverviewScreen;
 
 export const screens = [
   HelpScreen,
+  LocalizationScreen,
   OverviewScreen,
   ProfileScreen,
   SettingsScreen,

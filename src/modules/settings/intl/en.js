@@ -24,4 +24,18 @@ export default {
       },
     },
   },
+
+  localization: {
+    title: 'Language & Currency',
+    items: {
+      language: {
+        title: 'Select language',
+        subtitle: '',
+      },
+      currency: {
+        title: 'Select currency',
+        subtitle: '',
+      },
+    },
+  },
 };
