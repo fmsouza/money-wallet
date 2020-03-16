@@ -52,11 +52,9 @@ const useStyles = makeStyles(theme => ({
 export const Balance = ({ value, hideValue }) => {
   const styles = useStyles();
   const [visible, setVisibility] = useState(!hideValue);
-  const { getText, currency } = useLocale();
+  const { getText, selectedCurrency } = useLocale();
 
-  const balanceLabel = `${getText(
-    `currencies.${currency}.symbol`,
-  )} ${value.toFixed(2)}`;
+  const balanceLabel = `${selectedCurrency.symbol} ${value.toFixed(2)}`;
 
   const handleToggleVisibility = () => {
     setVisibility(v => !v);

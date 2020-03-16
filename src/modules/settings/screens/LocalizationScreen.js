@@ -8,7 +8,7 @@ import { useLocale } from '~modules/settings/intl';
 
 export const LocalizationScreen = () => {
   const navigation = useNavigation();
-  const { getText, currency, setCurrency, locale, setLocale } = useLocale();
+  const { getText, selectedCurrency, setCurrency, locale, setLocale } = useLocale();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -48,10 +48,10 @@ export const LocalizationScreen = () => {
         <ListItem
           leading={getIcon('currency-usd')}
           title={getText('localization.items.currency.title')}
-          subtitle={getText(`currencies.${currency}.symbol`)}
+          subtitle={selectedCurrency.symbol}
           trailing={
             <Picker
-              selectedValue={currency}
+              selectedValue={selectedCurrency.type}
               onValueChange={handleCurrencyChange}
               style={pickerStyle}>
               {currencies.map(cur => (
