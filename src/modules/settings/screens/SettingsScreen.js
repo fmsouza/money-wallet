@@ -6,6 +6,8 @@ import { useDarkMode } from '~shared/providers';
 import { Container, ListItem } from '~shared/widgets';
 import { useLocale } from '~modules/settings/intl';
 
+import { LocalizationScreen } from './LocalizationScreen';
+
 export const SettingsScreen = () => {
   const { darkMode, enableDarkMode } = useDarkMode();
   const { getText } = useLocale();
@@ -37,7 +39,7 @@ export const SettingsScreen = () => {
           subtitle={getText('settings.items.localization.subtitle')}
           icon="language"
           iconType="md"
-          onPress={onHandleNotImplemented}
+          onPress={() => navigation.navigate(LocalizationScreen.route)}
         />
         <ListItem
           title={getText('settings.items.notifications.title')}
