@@ -13,4 +13,9 @@ export default {
       symbol: 'US$',
     },
   },
+
+  languages: {
+    en: 'English',
+    pt: 'Portuguese',
+  },
 };

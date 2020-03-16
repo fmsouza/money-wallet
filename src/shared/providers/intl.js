@@ -34,19 +34,24 @@ export const LocalizationProvider = ({ ...props }) => {
     const addTranslations = translations => {
       i18n.translations = merge({ ...i18n.translations }, { ...translations });
     };
-    const { label, symbol } = getText(`currencies.${currency}`);
+
+    const selectedLocale = {
+      type: locale,
+      label: getText(`currencies.${locale}`),
+    };
+
     const selectedCurrency = {
       type: currency,
-      label,
-      symbol,
+      ...getText(`currencies.${currency}`),
     };
+
     return {
       addTranslations,
       selectedCurrency,
       getText,
       setCurrency,
       setLocale,
-      locale,
+      selectedLocale,
     };
   }, [currency, locale]);
 

@@ -28,22 +28,8 @@ export default {
   localization: {
     title: 'Idioma e Moeda',
     items: {
-      language: {
-        title: 'Selecione o idioma',
-        options: [
-          {
-            label: 'Inglês',
-            value: 'en',
-          },
-          {
-            label: 'Português',
-            value: 'pt',
-          },
-        ],
-      },
-      currency: {
-        title: 'Selecione a moeda',
-      },
+      language: 'Selecione o idioma',
+      currency: 'Selecione a moeda',
     },
   },
 };
