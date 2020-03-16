@@ -3,7 +3,7 @@ import { Alert, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { makeStyles } from '~shared/styles';
-import { Container, ListItem } from '~shared/widgets';
+import { Container, Icon, ListItem } from '~shared/widgets';
 import { useLocale } from '~modules/profile/intl';
 import { AccountDetails } from '~modules/profile/widgets';
 
@@ -31,6 +31,8 @@ export const ProfileScreen = () => {
     });
   }, [getText, navigation]);
 
+  const getIcon = (name, type) => <Icon name={name} type={type} size={32} />;
+
   const onHandleNotImplemented = () => {
     Alert.alert('Not implemented', 'This action was not implemented yet.');
   };
@@ -45,20 +47,19 @@ export const ProfileScreen = () => {
           routingNumber="0001"
         />
         <ListItem
+          leading={getIcon('share', 'md')}
           title={getText('profile.shareAccount.title')}
-          icon="share"
-          iconType="md"
           onPress={onHandleNotImplemented}
         />
         <ListItem
+          leading={getIcon('file-table')}
           title={getText('profile.exportStatements.title')}
-          icon="file-table"
           onPress={onHandleNotImplemented}
         />
         <ListItem
+          leading={getIcon('bank-remove')}
           title={getText('profile.resetAccount.title')}
           subtitle={getText('profile.resetAccount.subtitle')}
-          icon="bank-remove"
           onPress={onHandleNotImplemented}
         />
       </ScrollView>

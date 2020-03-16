@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from 'react';
 import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { Container, ListItem } from '~shared/widgets';
+import { Container, Icon, ListItem } from '~shared/widgets';
 import { useLocale } from '~modules/settings/intl';
 
 export const LocalizationScreen = () => {
@@ -15,17 +15,18 @@ export const LocalizationScreen = () => {
     });
   }, [getText, navigation]);
 
+  const getIcon = (name, type) => <Icon name={name} type={type} size={32} />;
+
   return (
     <Container>
       <ScrollView>
         <ListItem
+          leading={getIcon('language', 'md')}
           title={getText('localization.items.language.title')}
-          icon="language"
-          iconType="md"
         />
         <ListItem
+          leading={getIcon('currency-usd')}
           title={getText('localization.items.currency.title')}
-          icon="currency-usd"
         />
       </ScrollView>
     </Container>

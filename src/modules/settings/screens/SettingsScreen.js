@@ -3,7 +3,7 @@ import { Alert, ScrollView, Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useDarkMode } from '~shared/providers';
-import { Container, ListItem } from '~shared/widgets';
+import { Container, Icon, ListItem } from '~shared/widgets';
 import { useLocale } from '~modules/settings/intl';
 
 import { LocalizationScreen } from './LocalizationScreen';
@@ -25,42 +25,41 @@ export const SettingsScreen = () => {
     Alert.alert('Not implemented', 'This action was not implemented yet.');
   };
 
+  const getIcon = (name, type) => <Icon name={name} type={type} size={32} />;
+
   return (
     <Container>
       <ScrollView>
         <ListItem
+          leading={getIcon('shield-key')}
           title={getText('settings.items.security.title')}
           subtitle={getText('settings.items.security.subtitle')}
-          icon="shield-key"
           onPress={onHandleNotImplemented}
         />
         <ListItem
+          leading={getIcon('language', 'md')}
           title={getText('settings.items.localization.title')}
           subtitle={getText('settings.items.localization.subtitle')}
-          icon="language"
-          iconType="md"
           onPress={() => navigation.navigate(LocalizationScreen.route)}
         />
         <ListItem
+          leading={getIcon('notifications', 'md')}
           title={getText('settings.items.notifications.title')}
           subtitle={getText('settings.items.notifications.subtitle')}
-          icon="notifications"
-          iconType="md"
           onPress={onHandleNotImplemented}
         />
         <ListItem
+          leading={getIcon('brightness-4', 'md')}
           title={getText('settings.items.darkMode.title')}
           subtitle={getText('settings.items.darkMode.subtitle')}
-          icon="brightness-4"
-          iconType="md"
           trailing={
             <Switch value={darkMode} onValueChange={handleDarkModeToggle} />
           }
         />
         <ListItem
+          leading={getIcon('information')}
           title={getText('settings.items.about.title')}
           subtitle={getText('settings.items.about.subtitle')}
-          icon="information"
           onPress={onHandleNotImplemented}
         />
       </ScrollView>

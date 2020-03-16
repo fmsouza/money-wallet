@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   rightColumn: {
     paddingRight: theme.padding * 2,
   },
-  iconContainer: {
+  leadingContainer: {
     marginRight: theme.margin,
   },
   textContainer: {
@@ -48,25 +48,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const ListItem = ({
-  title,
-  subtitle,
-  icon,
-  iconType,
-  onPress,
-  trailing,
-}) => {
+export const ListItem = ({ leading, title, subtitle, onPress, trailing }) => {
   const styles = useStyles();
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <View style={styles.leftColumn}>
-          {icon && (
-            <View style={styles.iconContainer}>
-              <Icon name={icon} type={iconType} size={32} />
-            </View>
-          )}
+          {leading && <View style={styles.leadingContainer}>{leading}</View>}
           <View style={styles.textContainer}>
             <Text style={styles.title}>{title}</Text>
             {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
@@ -81,9 +70,8 @@ export const ListItem = ({
 ListItem.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  icon: PropTypes.string.isRequired,
-  iconType: PropTypes.string,
   onPress: PropTypes.func,
+  leading: PropTypes.node,
   trailing: PropTypes.node,
 };
 
@@ -91,5 +79,6 @@ ListItem.defaultProps = {
   subtitle: null,
   iconType: null,
   onPress: () => {},
+  leading: null,
   trailing: null,
 };
