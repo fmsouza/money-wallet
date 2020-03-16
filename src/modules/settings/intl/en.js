@@ -30,11 +30,19 @@ export default {
     items: {
       language: {
         title: 'Select language',
-        subtitle: '',
+        options: [
+          {
+            label: 'English',
+            value: 'en',
+          },
+          {
+            label: 'Portuguese',
+            value: 'pt',
+          },
+        ],
       },
       currency: {
         title: 'Select currency',
-        subtitle: '',
       },
     },
   },

@@ -30,6 +30,16 @@ export default {
     items: {
       language: {
         title: 'Selecione o idioma',
+        options: [
+          {
+            label: 'Inglês',
+            value: 'en',
+          },
+          {
+            label: 'Português',
+            value: 'pt',
+          },
+        ],
       },
       currency: {
         title: 'Selecione a moeda',
