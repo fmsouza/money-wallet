@@ -52,7 +52,11 @@ const useStyles = makeStyles(theme => ({
 export const Balance = ({ value, hideValue }) => {
   const styles = useStyles();
   const [visible, setVisibility] = useState(!hideValue);
-  const { getText } = useLocale();
+  const { getText, currency } = useLocale();
+
+  const balanceLabel = `${getText(
+    `currencies.${currency}.symbol`,
+  )} ${value.toFixed(2)}`;
 
   const handleToggleVisibility = () => {
     setVisibility(v => !v);
@@ -61,11 +65,7 @@ export const Balance = ({ value, hideValue }) => {
     <View style={styles.container}>
       <View style={styles.leftColumn}>
         <Text style={styles.title}>{getText('history.balance.label')}</Text>
-        {visible && (
-          <Text style={styles.balance}>
-            {getText('history.balance.value', { value })}
-          </Text>
-        )}
+        {visible && <Text style={styles.balance}>{balanceLabel}</Text>}
         {!visible && <View style={styles.placeholder} />}
       </View>
       <View style={styles.rightColumn}>
