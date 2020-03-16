@@ -3,11 +3,12 @@ import { Picker, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Container, Icon, ListItem } from '~shared/widgets';
+import { currencies } from '~shared/providers';
 import { useLocale } from '~modules/settings/intl';
 
 export const LocalizationScreen = () => {
   const navigation = useNavigation();
-  const { getText, locale, setLocale } = useLocale();
+  const { getText, currency, setCurrency, locale, setLocale } = useLocale();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -15,7 +16,11 @@ export const LocalizationScreen = () => {
     });
   }, [getText, navigation]);
 
+  const handleCurrencyChange = value => setCurrency(value);
+
   const handleLanguageChange = value => setLocale(value);
+
+  const getCurrencyLabel = cur => `${cur.label} (${cur.symbol})`;
 
   const getIcon = (name, type) => <Icon name={name} type={type} size={32} />;
 
@@ -43,6 +48,21 @@ export const LocalizationScreen = () => {
         <ListItem
           leading={getIcon('currency-usd')}
           title={getText('localization.items.currency.title')}
+          subtitle={getText(`currencies.${currency}.symbol`)}
+          trailing={
+            <Picker
+              selectedValue={currency}
+              onValueChange={handleCurrencyChange}
+              style={pickerStyle}>
+              {currencies.map(cur => (
+                <Picker.Item
+                  key={cur}
+                  label={getCurrencyLabel(getText(`currencies.${cur}`))}
+                  value={cur}
+                />
+              ))}
+            </Picker>
+          }
         />
       </ScrollView>
     </Container>
