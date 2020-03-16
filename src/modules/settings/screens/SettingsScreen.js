@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import { Alert, ScrollView } from 'react-native';
+import { Alert, ScrollView, Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useDarkMode } from '~shared/providers';
@@ -53,8 +53,9 @@ export const SettingsScreen = () => {
           subtitle={getText('settings.items.darkMode.subtitle')}
           icon="brightness-4"
           iconType="md"
-          onToggle={handleDarkModeToggle}
-          toggleValue={darkMode}
+          trailing={
+            <Switch value={darkMode} onValueChange={handleDarkModeToggle} />
+          }
         />
         <ListItem
           title={getText('settings.items.about.title')}

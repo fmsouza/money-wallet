@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import color from 'color';
 import { makeStyles } from '~shared/styles';
 import { Icon } from '~shared/widgets';
@@ -54,8 +54,7 @@ export const ListItem = ({
   icon,
   iconType,
   onPress,
-  onToggle,
-  toggleValue,
+  trailing,
 }) => {
   const styles = useStyles();
 
@@ -73,11 +72,7 @@ export const ListItem = ({
             {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
           </View>
         </View>
-        {onToggle && (
-          <View style={styles.rightColumn}>
-            <Switch value={toggleValue} onValueChange={onToggle} />
-          </View>
-        )}
+        {trailing && <View style={styles.rightColumn}>{trailing}</View>}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -86,15 +81,15 @@ export const ListItem = ({
 ListItem.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  icon: PropTypes.string,
+  icon: PropTypes.string.isRequired,
   iconType: PropTypes.string,
   onPress: PropTypes.func,
-  onToggle: PropTypes.func,
-  toggleValue: PropTypes.bool,
+  trailing: PropTypes.node,
 };
 
 ListItem.defaultProps = {
+  subtitle: null,
+  iconType: null,
   onPress: () => {},
-  onToggle: null,
-  toggleValue: false,
+  trailing: null,
 };
