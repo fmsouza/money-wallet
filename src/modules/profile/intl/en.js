@@ -4,9 +4,6 @@ export default {
     shareAccount: {
       title: 'Share Account Details',
     },
-    exportStatements: {
-      title: 'Export statements',
-    },
     resetAccount: {
       title: 'Reset Account',
       subtitle: 'Clear all the app memory',

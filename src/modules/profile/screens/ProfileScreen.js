@@ -67,11 +67,6 @@ export const ProfileScreen = () => {
           onPress={onHandleShare}
         />
         <ListItem
-          leading={getIcon('file-table')}
-          title={getText('profile.exportStatements.title')}
-          onPress={onHandleNotImplemented}
-        />
-        <ListItem
           leading={getIcon('bank-remove')}
           title={getText('profile.resetAccount.title')}
           subtitle={getText('profile.resetAccount.subtitle')}
