@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
+import { withProviders } from '~shared/providers';
 import { Icon } from '~shared/widgets';
 import { makeStyles } from '~shared/styles';
 
 import { useLocale } from '~modules/history/intl';
+import { HistoryProvider, useGetBalance } from '~modules/history/state';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -49,14 +51,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const Balance = ({ value, hideValue }) => {
+export const Balance = withProviders([HistoryProvider], () => {
   const styles = useStyles();
-  const [visible, setVisibility] = useState(!hideValue);
+  const [visible, setVisibility] = useState(false);
   const { getText, selectedCurrency } = useLocale();
+  const { data: balance, updateBalance } = useGetBalance();
 
-  const balanceLabel = `${selectedCurrency.symbol} ${value.toFixed(2)}`;
+  const balanceLabel = `${selectedCurrency.symbol} ${balance.toFixed(2)}`;
 
   const handleToggleVisibility = () => {
+    if (!visible) updateBalance();
     setVisibility(v => !v);
   };
   return (
@@ -74,13 +78,4 @@ export const Balance = ({ value, hideValue }) => {
       </View>
     </View>
   );
-};
-
-Balance.propTypes = {
-  value: PropTypes.number.isRequired,
-  hideValue: PropTypes.bool,
-};
-
-Balance.defaultProps = {
-  hideValue: true,
-};
+});

@@ -8,15 +8,17 @@ import React, {
 
 import { DUMMY_TRANSACTIONS } from './dummy';
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-const HistoryContext = createContext({
+let cache = {
   balance: 0.0,
   error: null,
   getHistory: () => {},
   loading: false,
   statements: [],
-});
+};
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+const HistoryContext = createContext(cache);
 
 export const useHistory = () => {
   const { error, getHistory, loading, statements } = useContext(HistoryContext);
@@ -24,15 +26,36 @@ export const useHistory = () => {
 };
 
 export const useGetBalance = () => {
-  const { error, loading, balance } = useContext(HistoryContext);
-  return { error, loading, data: balance };
+  const { error, loading, statements, balance, getHistory } = useContext(
+    HistoryContext,
+  );
+  const updateBalance = () => {
+    if (statements.length > 0) return;
+    getHistory();
+  };
+  return { error, loading, data: balance, updateBalance };
 };
 
 export const HistoryProvider = props => {
-  const [statements, setStatements] = useState([]);
-  const [balance, setBalance] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [balance, setBalance] = useState(cache.balance);
+  const [error, setError] = useState(cache.error);
+  const [loading, setLoading] = useState(cache.loading);
+  const [statements, setStatements] = useState(cache.statements);
+
+  const updateError = data => {
+    setError(data);
+    cache.error = data;
+  };
+
+  const updateLoading = data => {
+    setLoading(data);
+    cache.loading = data;
+  };
+
+  const updateStatements = data => {
+    setStatements(data);
+    cache.statements = data;
+  };
 
   const calculateBalance = useCallback(() => {
     const tmp = statements.reduce((acc, next) => {
@@ -40,6 +63,7 @@ export const HistoryProvider = props => {
       return acc;
     }, 0);
     setBalance(tmp);
+    cache.balance = tmp;
   }, [statements, setBalance]);
 
   useEffect(() => {
@@ -52,11 +76,11 @@ export const HistoryProvider = props => {
     error,
     statements,
     getHistory: async () => {
-      setLoading(true);
+      updateLoading(true);
       await sleep(1000);
-      setStatements(DUMMY_TRANSACTIONS);
+      updateStatements(DUMMY_TRANSACTIONS);
       calculateBalance();
-      setLoading(false);
+      updateLoading(false);
     },
   };
 

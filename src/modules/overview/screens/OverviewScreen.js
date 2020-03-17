@@ -82,7 +82,7 @@ export const OverviewScreen = () => {
       <Container>
         <View style={styles.content}>
           <View style={styles.balanceWrapper}>
-            <Balance value={200.55} />
+            <Balance />
           </View>
           <InsightsSlider />
         </View>

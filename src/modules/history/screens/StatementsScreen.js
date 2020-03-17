@@ -54,7 +54,7 @@ export const StatementsScreen = withProviders([HistoryProvider], () => {
         refreshControl={refreshControl}
         renderItem={({ item }) => <TransactionItem key={item.id} tx={item} />}
         keyExtractor={item => item.id}
-        ListHeaderComponent={<Balance value={balance} hideValue={false} />}
+        ListHeaderComponent={<Balance />}
       />
     </Container>
   );
