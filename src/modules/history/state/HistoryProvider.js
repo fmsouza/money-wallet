@@ -25,7 +25,7 @@ export const HistoryProvider = props => {
     getHistory: async () => {
       console.log('loading data...');
       setLoading(true);
-      await sleep(5000);
+      await sleep(1000);
       setData(DUMMY_TRANSACTIONS);
       setLoading(false);
       console.log('finished loading');
