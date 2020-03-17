@@ -32,4 +32,11 @@ export default {
       currency: 'Select currency',
     },
   },
+
+  security: {
+    title: 'Security',
+    items: {
+      fingerprint: 'Enable fingerprint',
+    },
+  },
 };

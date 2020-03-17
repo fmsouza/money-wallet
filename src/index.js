@@ -8,7 +8,11 @@ import { useTheme } from '~shared/providers';
 import { AboutScreen, HelpScreen } from '~modules/support/screens';
 import { OverviewScreen } from '~modules/overview/screens';
 import { ProfileScreen } from '~modules/profile/screens';
-import { LocalizationScreen, SettingsScreen } from '~modules/settings/screens';
+import {
+  LocalizationScreen,
+  SecurityScreen,
+  SettingsScreen,
+} from '~modules/settings/screens';
 import { StatementsScreen } from '~modules/history/screens';
 
 const Stack = createStackNavigator();
@@ -21,6 +25,7 @@ export const screens = [
   LocalizationScreen,
   OverviewScreen,
   ProfileScreen,
+  SecurityScreen,
   SettingsScreen,
   StatementsScreen,
 ];

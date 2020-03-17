@@ -32,4 +32,11 @@ export default {
       currency: 'Selecione a moeda',
     },
   },
+
+  security: {
+    title: 'Segurança',
+    items: {
+      fingerprint: 'Habilitar impressão digital',
+    },
+  },
 };

@@ -8,6 +8,7 @@ import { useLocale } from '~modules/settings/intl';
 import { AboutScreen } from '~modules/support/screens';
 
 import { LocalizationScreen } from './LocalizationScreen';
+import { SecurityScreen } from './SecurityScreen';
 
 export const SettingsScreen = () => {
   const { darkMode, enableDarkMode } = useDarkMode();
@@ -35,7 +36,7 @@ export const SettingsScreen = () => {
           leading={getIcon('shield-key')}
           title={getText('settings.items.security.title')}
           subtitle={getText('settings.items.security.subtitle')}
-          onPress={onHandleNotImplemented}
+          onPress={() => navigation.navigate(SecurityScreen.route)}
         />
         <ListItem
           leading={getIcon('language', 'md')}
