@@ -16,5 +16,8 @@ export default {
       title: 'Account details:',
       routingLabel: 'Routing number: {{value}}',
     },
+
+    shareableAccountText:
+      'Bank name: {{bankName}} ({{bankNumber}}) \nAccount number: {{accountNumber}} \nRoutingNumber: {{routingNumber}}',
   },
 };

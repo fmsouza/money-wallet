@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import { Alert, ScrollView } from 'react-native';
+import { Alert, ScrollView, Share } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { makeStyles } from '~shared/styles';
@@ -33,6 +33,21 @@ export const ProfileScreen = () => {
 
   const getIcon = (name, type) => <Icon name={name} type={type} size={32} />;
 
+  const bankName = 'National Bank';
+  const bankNumber = '340';
+  const accountNumber = '32455-3';
+  const routingNumber = '0001';
+
+  const onHandleShare = () =>
+    Share.share({
+      message: getText('profile.shareableAccountText', {
+        bankName,
+        bankNumber,
+        accountNumber,
+        routingNumber,
+      }),
+    });
+
   const onHandleNotImplemented = () => {
     Alert.alert('Not implemented', 'This action was not implemented yet.');
   };
@@ -41,15 +56,15 @@ export const ProfileScreen = () => {
     <Container style={styles.container}>
       <ScrollView>
         <AccountDetails
-          bankName="National Bank"
-          bankNumber="340"
-          accountNumber="32455-3"
-          routingNumber="0001"
+          bankName={bankName}
+          bankNumber={bankNumber}
+          accountNumber={accountNumber}
+          routingNumber={routingNumber}
         />
         <ListItem
           leading={getIcon('share', 'md')}
           title={getText('profile.shareAccount.title')}
-          onPress={onHandleNotImplemented}
+          onPress={onHandleShare}
         />
         <ListItem
           leading={getIcon('file-table')}
