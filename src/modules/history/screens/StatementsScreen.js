@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { FlatList, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
