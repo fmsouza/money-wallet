@@ -5,30 +5,48 @@ import { DUMMY_TRANSACTIONS } from './dummy';
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const HistoryContext = createContext({
-  loading: false,
+  balance: 0.0,
   error: null,
-  data: [],
   getHistory: () => {},
+  loading: false,
+  statements: [],
 });
 
-export const useHistory = () => useContext(HistoryContext);
+export const useHistory = () => {
+  const { error, getHistory, loading, statements } = useContext(HistoryContext);
+  return { error, getHistory, loading, data: statements };
+};
+
+export const useGetBalance = () => {
+  const { error, loading, balance, getHistory } = useContext(HistoryContext);
+  return { error, loading, data: balance, updateBalance: getHistory };
+};
 
 export const HistoryProvider = props => {
-  const [data, setData] = useState([]);
+  const [statements, setStatements] = useState([]);
+  const [balance, setBalance] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const calculateBalance = () => {
+    const tmp = statements.reduce((acc, next) => {
+      acc += next.type === 'ingoing' ? next.amount : -next.amount;
+      return acc;
+    }, 0);
+    setBalance(tmp);
+  };
+
   const historyContext = {
-    data,
+    balance,
     loading,
     error,
+    statements,
     getHistory: async () => {
-      console.log('loading data...');
       setLoading(true);
       await sleep(1000);
-      setData(DUMMY_TRANSACTIONS);
+      setStatements(DUMMY_TRANSACTIONS);
+      calculateBalance();
       setLoading(false);
-      console.log('finished loading');
     },
   };
 
