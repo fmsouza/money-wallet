@@ -8,11 +8,7 @@ import { Container } from '~shared/widgets';
 import { withProviders } from '~shared/providers';
 
 import { useLocale } from '~modules/history/intl';
-import {
-  HistoryProvider,
-  useGetBalance,
-  useHistory,
-} from '~modules/history/state';
+import { HistoryProvider, useHistory } from '~modules/history/state';
 import { Balance, TransactionItem } from '~modules/history/widgets';
 
 const useStyles = makeStyles(theme => ({
@@ -32,7 +28,6 @@ export const StatementsScreen = withProviders([HistoryProvider], () => {
   const { getText } = useLocale();
   const navigation = useNavigation();
   const { data: statements, loading, error, getHistory } = useHistory();
-  const { data: balance } = useGetBalance();
 
   useLayoutEffect(() => {
     navigation.setOptions({
