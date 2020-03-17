@@ -8,7 +8,11 @@ import { Container } from '~shared/widgets';
 import { withProviders } from '~shared/providers';
 
 import { useLocale } from '~modules/history/intl';
-import { HistoryProvider, useHistory } from '~modules/history/state';
+import {
+  HistoryProvider,
+  useGetBalance,
+  useHistory,
+} from '~modules/history/state';
 import { Balance, TransactionItem } from '~modules/history/widgets';
 
 const useStyles = makeStyles(theme => ({
@@ -27,7 +31,8 @@ export const StatementsScreen = withProviders([HistoryProvider], () => {
   const styles = useStyles();
   const { getText } = useLocale();
   const navigation = useNavigation();
-  const { data, loading, error, getHistory } = useHistory();
+  const { data: statements, loading, error, getHistory } = useHistory();
+  const { data: balance } = useGetBalance();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -45,11 +50,11 @@ export const StatementsScreen = withProviders([HistoryProvider], () => {
     <Container style={styles.container}>
       <FlatList
         style={styles.mainScrollContainer}
-        data={data}
+        data={statements}
         refreshControl={refreshControl}
         renderItem={({ item }) => <TransactionItem key={item.id} tx={item} />}
         keyExtractor={item => item.id}
-        ListHeaderComponent={<Balance value={200.55} hideValue={false} />}
+        ListHeaderComponent={<Balance value={balance} hideValue={false} />}
       />
     </Container>
   );

@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
 
 import { DUMMY_TRANSACTIONS } from './dummy';
 
@@ -18,8 +24,8 @@ export const useHistory = () => {
 };
 
 export const useGetBalance = () => {
-  const { error, loading, balance, getHistory } = useContext(HistoryContext);
-  return { error, loading, data: balance, updateBalance: getHistory };
+  const { error, loading, balance } = useContext(HistoryContext);
+  return { error, loading, data: balance };
 };
 
 export const HistoryProvider = props => {
@@ -28,13 +34,17 @@ export const HistoryProvider = props => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const calculateBalance = () => {
+  const calculateBalance = useCallback(() => {
     const tmp = statements.reduce((acc, next) => {
       acc += next.type === 'ingoing' ? next.amount : -next.amount;
       return acc;
     }, 0);
     setBalance(tmp);
-  };
+  }, [statements, setBalance]);
+
+  useEffect(() => {
+    calculateBalance();
+  }, [calculateBalance, statements]);
 
   const historyContext = {
     balance,
