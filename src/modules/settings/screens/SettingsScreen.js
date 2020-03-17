@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useDarkMode } from '~shared/providers';
 import { Container, Icon, ListItem } from '~shared/widgets';
 import { useLocale } from '~modules/settings/intl';
+import { AboutScreen } from '~modules/support/screens';
 
 import { LocalizationScreen } from './LocalizationScreen';
 
@@ -60,7 +61,7 @@ export const SettingsScreen = () => {
           leading={getIcon('information')}
           title={getText('settings.items.about.title')}
           subtitle={getText('settings.items.about.subtitle')}
-          onPress={onHandleNotImplemented}
+          onPress={() => navigation.navigate(AboutScreen.route)}
         />
       </ScrollView>
     </Container>

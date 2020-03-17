@@ -13,7 +13,7 @@ export const HelpScreen = props => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: getText('support.title'),
+      title: getText('help.title'),
     });
   }, [getText, navigation]);
 

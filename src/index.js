@@ -1,21 +1,22 @@
 import React from 'react';
 import { StatusBar, View } from 'react-native';
 import merge from 'lodash/merge';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { useTheme } from '~shared/providers';
-import { HelpScreen } from '~modules/support/screens';
+import { AboutScreen, HelpScreen } from '~modules/support/screens';
 import { OverviewScreen } from '~modules/overview/screens';
 import { ProfileScreen } from '~modules/profile/screens';
 import { LocalizationScreen, SettingsScreen } from '~modules/settings/screens';
 import { StatementsScreen } from '~modules/history/screens';
-import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 
 export const initialScreen = OverviewScreen;
 
 export const screens = [
+  AboutScreen,
   HelpScreen,
   LocalizationScreen,
   OverviewScreen,
