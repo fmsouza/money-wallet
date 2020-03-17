@@ -6,4 +6,8 @@ export default {
       value: 'R$ {{value}}',
     },
   },
+
+  insights: {
+    title: 'Insights',
+  },
 };

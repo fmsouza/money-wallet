@@ -7,7 +7,7 @@ import { makeStyles } from '~shared/styles';
 import { Container, Icon } from '~shared/widgets';
 
 import { useLocale } from '~modules/overview/intl';
-import { StatementsScreen } from '~modules/history/screens';
+import { InsightsScreen, StatementsScreen } from '~modules/history/screens';
 import { Balance } from '~modules/history/widgets';
 import { InsightsSlider, OperationItem } from '~modules/overview/widgets';
 import { HelpScreen } from '~modules/support/screens';
@@ -97,7 +97,7 @@ export const OverviewScreen = () => {
           <OperationItem
             title={getText('overview.operations.insights')}
             icon="finance"
-            onPress={onHandleNotImplemented}
+            onPress={() => navigation.navigate(InsightsScreen.route)}
           />
           <OperationItem
             title={getText('overview.operations.deposit')}

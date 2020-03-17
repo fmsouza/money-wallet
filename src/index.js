@@ -13,7 +13,7 @@ import {
   SecurityScreen,
   SettingsScreen,
 } from '~modules/settings/screens';
-import { StatementsScreen } from '~modules/history/screens';
+import { InsightsScreen, StatementsScreen } from '~modules/history/screens';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +22,7 @@ export const initialScreen = OverviewScreen;
 export const screens = [
   AboutScreen,
   HelpScreen,
+  InsightsScreen,
   LocalizationScreen,
   OverviewScreen,
   ProfileScreen,
