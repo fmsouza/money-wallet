@@ -6,7 +6,7 @@ import { name as appName } from './app.json';
 import { AppRouter } from '~app';
 import { LocalizationProvider, ThemeProvider } from '~shared/providers';
 
-const App = () => (
+export const App = () => (
   <LocalizationProvider>
     <ThemeProvider>
       <AppRouter />

@@ -1,5 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { Platform, NativeModules } from 'react-native';
+import get from 'lodash/get';
 import merge from 'lodash/merge';
 import i18n from 'i18n-js';
 import defaultTranslations from './translations';
@@ -8,9 +9,17 @@ const DEFAULT_CURRENCY = 'usd';
 
 const deviceLocale =
   Platform.OS === 'ios'
-    ? NativeModules.SettingsManager.settings.AppleLocale ||
-      NativeModules.SettingsManager.settings.AppleLanguages[0] //iOS 13
-    : NativeModules.I18nManager.localeIdentifier;
+    ? get(
+        NativeModules,
+        ['SettingsManager', 'settings', 'AppleLocale'],
+        null,
+      ) ||
+      get(
+        NativeModules,
+        ['SettingsManager', 'settings', 'AppleLocale', 0],
+        'en',
+      ) //iOS 13
+    : get(NativeModules, ['I18nManager', 'localeIdentifier'], 'en');
 
 i18n.fallbacks = true;
 i18n.translations = defaultTranslations;
