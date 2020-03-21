@@ -5,7 +5,7 @@ export const DUMMY_TRANSACTIONS = [
     type: 'outgoing',
     label: 'Uber trip',
     amount: 5.3,
-    datestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   },
   {
     id: '2',
@@ -13,7 +13,7 @@ export const DUMMY_TRANSACTIONS = [
     type: 'ingoing',
     label: 'Salary',
     amount: 4000,
-    datestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   },
   {
     id: '3',
@@ -21,7 +21,7 @@ export const DUMMY_TRANSACTIONS = [
     type: 'outgoing',
     label: 'Health insurance',
     amount: 99.99,
-    datestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   },
   {
     id: '4',
@@ -29,7 +29,7 @@ export const DUMMY_TRANSACTIONS = [
     type: 'outgoing',
     label: 'Netflix',
     amount: 9.99,
-    datestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   },
   {
     id: '5',
@@ -37,7 +37,7 @@ export const DUMMY_TRANSACTIONS = [
     type: 'outgoing',
     label: 'Carrefour',
     amount: 59.99,
-    datestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   },
   {
     id: '6',
@@ -45,7 +45,7 @@ export const DUMMY_TRANSACTIONS = [
     type: 'outgoing',
     label: 'Uber eats',
     amount: 39.99,
-    datestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   },
   {
     id: '7',
@@ -53,7 +53,7 @@ export const DUMMY_TRANSACTIONS = [
     type: 'outgoing',
     label: 'Lufthansa',
     amount: 399.99,
-    datestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   },
   {
     id: '8',
@@ -61,7 +61,7 @@ export const DUMMY_TRANSACTIONS = [
     type: 'outgoing',
     label: 'Udemy',
     amount: 19.99,
-    datestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   },
   {
     id: '9',
@@ -69,7 +69,7 @@ export const DUMMY_TRANSACTIONS = [
     type: 'outgoing',
     label: 'Kabum',
     amount: 299.99,
-    datestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   },
   {
     id: '10',
@@ -77,6 +77,6 @@ export const DUMMY_TRANSACTIONS = [
     type: 'outgoing',
     label: 'Paypal',
     amount: 54.99,
-    datestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString(),
   },
 ];
