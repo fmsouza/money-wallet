@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-import { DUMMY_TRANSACTIONS } from './dummy';
+import DUMMY_TRANSACTIONS from './dummy_transactions';
 
 import { cache, HistoryContext } from './hooks';
 
@@ -29,7 +29,8 @@ export const HistoryProvider = props => {
 
   const calculateBalance = useCallback(() => {
     const tmp = statements.reduce((acc, next) => {
-      acc += next.type === 'ingoing' ? next.amount : -next.amount;
+      acc +=
+        next.type === 'ingoing' ? Number(next.amount) : -Number(next.amount);
       return acc;
     }, 0);
     setBalance(tmp);
