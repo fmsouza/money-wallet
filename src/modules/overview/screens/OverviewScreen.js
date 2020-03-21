@@ -88,7 +88,7 @@ export const OverviewScreen = () => {
         </View>
       </Container>
       <View style={styles.footer}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <OperationItem
             title={getText('overview.operations.statements')}
             icon="format-list-bulleted"
