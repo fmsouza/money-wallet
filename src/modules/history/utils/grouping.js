@@ -2,7 +2,7 @@ import { randomColor } from '~shared/styles';
 
 export const calculateTotalByCategory = statements =>
   statements
-    .filter(stmn => stmn.type === 'outgoing')
+    .filter(stmn => Number(stmn.amount) > 0 && stmn.type === 'outgoing')
     .reduce((map, statement) => {
       map[statement.category] = map[statement.category]
         ? map[statement.category] + statement.amount
