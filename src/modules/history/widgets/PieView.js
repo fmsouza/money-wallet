@@ -19,8 +19,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
   },
   pieChart: {
-    width: theme.maxWidth * 0.45,
-    height: theme.maxWidth * 0.45,
+    width: theme.maxWidth * 0.4,
+    height: theme.maxWidth * 0.4,
   },
   items: {
     marginLeft: theme.margin * 4,
