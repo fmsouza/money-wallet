@@ -1,12 +1,18 @@
 import { randomColor } from '~shared/styles';
 
+export const calculateTotalExpenses = statements =>
+  statements
+    .filter(st => st.type === 'outgoing')
+    .map(st => Number(st.amount))
+    .reduce((acc, amount) => acc + amount, 0);
+
 export const calculateTotalByCategory = statements =>
   statements
     .filter(stmn => Number(stmn.amount) > 0 && stmn.type === 'outgoing')
     .reduce((map, statement) => {
       map[statement.category] = map[statement.category]
-        ? map[statement.category] + statement.amount
-        : statement.amount;
+        ? map[statement.category] + Number(statement.amount)
+        : Number(statement.amount);
       return map;
     }, {});
 

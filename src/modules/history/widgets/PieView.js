@@ -7,6 +7,7 @@ import { flatten, makeStyles } from '~shared/styles';
 
 import {
   calculateTotalByCategory,
+  calculateTotalExpenses,
   convertToPieSlices,
 } from '~modules/history/utils';
 
@@ -18,8 +19,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-start', // eslint-disable-line sonarjs/no-duplicate-string
   },
   pieChart: {
-    width: theme.maxWidth * 0.5,
-    height: theme.maxWidth * 0.5,
+    width: theme.maxWidth * 0.4,
+    height: theme.maxWidth * 0.4,
   },
   items: {
     marginLeft: theme.margin * 4,
@@ -49,6 +50,7 @@ const useStyles = makeStyles(theme => ({
 export const PieView = ({ statements }) => {
   const styles = useStyles();
 
+  const total = calculateTotalExpenses(statements);
   const totalByCategory = calculateTotalByCategory(statements);
   const pieSlices = convertToPieSlices(totalByCategory);
 
@@ -68,7 +70,10 @@ export const PieView = ({ statements }) => {
                 backgroundColor: slice.svg.fill,
               })}
             />
-            <Text style={styles.categoryTitle}>{slice.title}</Text>
+            <Text style={styles.categoryTitle}>
+              {slice.title} ({((slice.value / total) * 100).toFixed(0)}
+              %)
+            </Text>
           </View>
         ))}
       </View>
