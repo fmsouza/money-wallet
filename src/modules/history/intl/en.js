@@ -10,5 +10,8 @@ export default {
   insights: {
     title: 'Insights',
     topExpenses: 'Top {{size}} expenses',
+    incoming: 'Incoming',
+    outgoing: 'Outgoing',
+    balance: 'Balance',
   },
 };

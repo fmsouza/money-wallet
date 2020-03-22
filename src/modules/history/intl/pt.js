@@ -10,5 +10,8 @@ export default {
   insights: {
     title: 'Estatísticas',
     topExpenses: 'Maiores {{size}} gastos',
+    incoming: 'Rendas',
+    outgoing: 'Gastos',
+    balance: 'Saldo final',
   },
 };

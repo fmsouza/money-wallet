@@ -6,6 +6,7 @@ import { flatten, makeStyles } from '~shared/styles';
 import { Space } from '~shared/widgets';
 import { useTheme } from '~shared/providers';
 
+import { useLocale } from '~modules/history/intl';
 import { totalBy } from '~modules/history/utils';
 
 const useStyles = makeStyles(theme => ({
@@ -68,6 +69,7 @@ const EXPENSE_COLOR = '#bb0023';
 export const TransactionTypeView = ({ statements }) => {
   const styles = useStyles();
   const { theme } = useTheme();
+  const { getText, selectedCurrency } = useLocale();
 
   const incoming = totalBy(stmn => stmn.type === 'incoming', statements);
   const expenses = totalBy(stmn => stmn.type === 'outgoing', statements);
@@ -79,8 +81,10 @@ export const TransactionTypeView = ({ statements }) => {
     <View style={styles.container}>
       <View style={styles.row}>
         <View style={styles.column}>
-          <Text style={styles.title}>Incoming</Text>
-          <Text style={styles.value}>${incoming.toFixed(2)}</Text>
+          <Text style={styles.title}>{getText('insights.incoming')}</Text>
+          <Text style={styles.value}>
+            {selectedCurrency.symbol} {incoming.toFixed(2)}
+          </Text>
         </View>
         <View style={flatten(styles.column, styles.barColumn)}>
           <View
@@ -94,8 +98,10 @@ export const TransactionTypeView = ({ statements }) => {
       <Space height={8} />
       <View style={styles.row}>
         <View style={styles.column}>
-          <Text style={styles.title}>Expenses</Text>
-          <Text style={styles.value}>${expenses.toFixed(2)}</Text>
+          <Text style={styles.title}>{getText('insights.outgoing')}</Text>
+          <Text style={styles.value}>
+            {selectedCurrency.symbol} {expenses.toFixed(2)}
+          </Text>
         </View>
         <View style={flatten(styles.column, styles.barColumn)}>
           <View
@@ -108,13 +114,13 @@ export const TransactionTypeView = ({ statements }) => {
       </View>
       <Space height={8} />
       <View style={styles.balanceRow}>
-        <Text style={styles.title}>Balance</Text>
+        <Text style={styles.title}>{getText('insights.balance')}</Text>
         <Text
           style={flatten(
             styles.value,
             balance < 0 && { color: EXPENSE_COLOR },
           )}>
-          {balance.toFixed(2)}
+          {selectedCurrency.symbol} {balance.toFixed(2)}
         </Text>
       </View>
     </View>
