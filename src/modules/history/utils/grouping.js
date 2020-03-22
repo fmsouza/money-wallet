@@ -10,6 +10,9 @@ export const calculateTotalByCategory = statements =>
       return map;
     }, {});
 
+export const totalBy = (filter, statements) =>
+  statements.filter(filter).reduce((acc, item) => acc + Number(item.amount), 0);
+
 export const convertToPieSlices = (totalByCategory, onPressSlice) =>
   Object.keys(totalByCategory).map(category => ({
     key: `pie-${category}`,

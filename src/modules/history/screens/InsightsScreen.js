@@ -1,17 +1,22 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { RefreshControl, ScrollView, Text, View } from 'react-native';
+import {
+  RefreshControl,
+  ScrollView,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { format, isSameMonth } from 'date-fns';
 
 import { useOnMount } from '~shared/hooks';
 import { flatten, makeStyles } from '~shared/styles';
-import { Container } from '~shared/widgets';
+import { Container, Space } from '~shared/widgets';
 import { withProviders } from '~shared/providers';
 
 import { useLocale } from '~modules/history/intl';
 import { HistoryProvider, useInsights } from '~modules/history/state';
-import { PieView } from '~modules/history/widgets';
-import { format, isSameMonth } from 'date-fns';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { PieView, TransactionTypeView } from '~modules/history/widgets';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -47,9 +52,16 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
     height: theme.maxHeight,
   },
-  monthViewContainer: {
+  monthViewScroll: {
     width: theme.maxWidth,
+  },
+  monthViewContainer: {
     height: theme.maxHeight,
+    paddingVertical: theme.padding * 4,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 }));
 
@@ -101,15 +113,18 @@ export const InsightsScreen = withProviders([HistoryProvider], () => {
           ))}
         </ScrollView>
       </View>
-      <Container style={styles.contentContainer}>
-        {statements.length > 0 && (
-          <ScrollView
-            style={styles.monthViewContainer}
-            refreshControl={refreshControl}>
+      {statements.length > 0 && (
+        <ScrollView
+          style={styles.monthViewScroll}
+          contentContainerStyle={styles.monthViewContainer}
+          refreshControl={refreshControl}>
+          <Container style={styles.contentContainer}>
             <PieView statements={statements} />
-          </ScrollView>
-        )}
-      </Container>
+            <Space height={32} />
+            <TransactionTypeView statements={statements} />
+          </Container>
+        </ScrollView>
+      )}
     </View>
   );
 });

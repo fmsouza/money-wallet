@@ -2,7 +2,7 @@ export default [
   {
     id: '8F438F20-9EA0-641E-D51E-7FE17D31722A',
     category: 'electronics',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Dapibus Rutrum Justo Consulting',
     amount: '95.69',
     timestamp: '2020-04-09T08:37:37-07:00',
@@ -26,7 +26,7 @@ export default [
   {
     id: '770FA6EE-73E9-8478-1F5D-DCA20F02087A',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Lobortis Quis Consulting',
     amount: '2.94',
     timestamp: '2021-03-07T09:52:17-08:00',
@@ -34,7 +34,7 @@ export default [
   {
     id: '5A7D9ED8-6E65-7450-5325-624CFD8F1CB3',
     category: 'market',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Pharetra PC',
     amount: '9.80',
     timestamp: '2020-03-13T23:48:28-07:00',
@@ -42,7 +42,7 @@ export default [
   {
     id: '7508ACD4-801D-9168-1022-CF131FE3E223',
     category: 'others',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Diam Vel Inc.',
     amount: '73.74',
     timestamp: '2020-11-06T05:23:40-08:00',
@@ -50,7 +50,7 @@ export default [
   {
     id: '8CB02A6A-2E2D-9B39-9EAF-CBEAFC9B1EC6',
     category: 'travel',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Mauris Non Inc.',
     amount: '67.94',
     timestamp: '2019-06-23T16:01:22-07:00',
@@ -74,7 +74,7 @@ export default [
   {
     id: '59D9E391-65AC-4C62-5BAA-3509DA3CC69F',
     category: 'electronics',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Et Corporation',
     amount: '36.86',
     timestamp: '2021-01-28T13:22:35-08:00',
@@ -90,7 +90,7 @@ export default [
   {
     id: '3452B6EB-B7D5-0CA8-BA4B-1904597A55A5',
     category: 'travel',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Eros Turpis Non Ltd',
     amount: '85.95',
     timestamp: '2020-02-15T16:06:36-08:00',
@@ -98,7 +98,7 @@ export default [
   {
     id: 'B68364EC-B1DB-C4CD-633D-6B71A3BBB37C',
     category: 'services',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Tellus Lorem Eu Corporation',
     amount: '31.59',
     timestamp: '2021-02-27T09:38:30-08:00',
@@ -114,7 +114,7 @@ export default [
   {
     id: 'FB6FB2F7-E71A-FC2A-82BA-A7642E9A7F5E',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Arcu Et Pede Industries',
     amount: '81.91',
     timestamp: '2019-05-06T19:52:29-07:00',
@@ -122,7 +122,7 @@ export default [
   {
     id: '676EC56E-A154-EFA3-A9CE-89A611E70755',
     category: 'transport',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Tellus Id Nunc Corporation',
     amount: '81.33',
     timestamp: '2019-08-05T00:48:28-07:00',
@@ -138,7 +138,7 @@ export default [
   {
     id: 'ABB5D18E-2CDC-70AE-F8BA-69D6F73ABC8D',
     category: 'electronics',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Ac LLP',
     amount: '59.80',
     timestamp: '2020-07-15T02:51:46-07:00',
@@ -154,7 +154,7 @@ export default [
   {
     id: '4F7B59A0-6D59-EC6C-025B-2317300B2FE5',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Amet Luctus Company',
     amount: '57.49',
     timestamp: '2019-11-23T03:36:55-08:00',
@@ -170,7 +170,7 @@ export default [
   {
     id: '49DFB1C8-D083-D56D-1449-29EDE52F63A4',
     category: 'travel',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Arcu Aliquam Limited',
     amount: '54.36',
     timestamp: '2019-04-16T06:03:25-07:00',
@@ -186,7 +186,7 @@ export default [
   {
     id: 'BAFAA73F-EDE3-E5EB-85C3-88C5DD356840',
     category: 'restaurants',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Ac Ipsum Phasellus Incorporated',
     amount: '82.95',
     timestamp: '2020-07-11T14:15:04-07:00',
@@ -194,7 +194,7 @@ export default [
   {
     id: 'E932F557-9CE5-2223-069E-C9589CF52EEB',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Sem Pellentesque Associates',
     amount: '92.50',
     timestamp: '2021-02-17T04:19:34-08:00',
@@ -210,7 +210,7 @@ export default [
   {
     id: 'E25F883B-AF91-F0CE-1801-271B90357020',
     category: 'travel',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Libero Foundation',
     amount: '60.57',
     timestamp: '2020-08-27T08:36:59-07:00',
@@ -234,7 +234,7 @@ export default [
   {
     id: 'A7D5F91A-1AAE-EA52-0DCA-0CF24DAC9A24',
     category: 'others',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Luctus Limited',
     amount: '12.34',
     timestamp: '2019-10-08T18:14:13-07:00',
@@ -274,7 +274,7 @@ export default [
   {
     id: '715CD308-4744-01D8-8CAB-5DFE6FA5FE76',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Sem Pellentesque Company',
     amount: '3.36',
     timestamp: '2020-09-05T14:36:30-07:00',
@@ -282,7 +282,7 @@ export default [
   {
     id: '476E9F20-DD54-0CD2-C8B2-DF54F31F5B4D',
     category: 'services',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Vulputate Nisi Sem Inc.',
     amount: '5.09',
     timestamp: '2021-02-11T04:18:59-08:00',
@@ -298,7 +298,7 @@ export default [
   {
     id: '263671B3-F6F0-4948-799E-9F8DA1BA004A',
     category: 'health',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Nam PC',
     amount: '18.16',
     timestamp: '2020-07-23T05:21:00-07:00',
@@ -314,7 +314,7 @@ export default [
   {
     id: '99E5C943-25DC-0E33-001E-8E44FDC7B51A',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Senectus Institute',
     amount: '42.13',
     timestamp: '2019-11-13T07:24:40-08:00',
@@ -330,7 +330,7 @@ export default [
   {
     id: 'F4263645-F8FE-DC2D-7EE6-B8E763556FDB',
     category: 'others',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Vel Consulting',
     amount: '99.93',
     timestamp: '2019-07-27T23:56:26-07:00',
@@ -354,7 +354,7 @@ export default [
   {
     id: '3B72ACBE-88A7-B998-F0FF-D97E89CE31A8',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Auctor Quis Tristique Institute',
     amount: '39.75',
     timestamp: '2021-01-15T20:30:43-08:00',
@@ -370,7 +370,7 @@ export default [
   {
     id: '42F4A66D-C4E8-E11E-EC21-32F370CB2621',
     category: 'transport',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Pede Industries',
     amount: '19.15',
     timestamp: '2020-09-22T17:04:45-07:00',
@@ -402,7 +402,7 @@ export default [
   {
     id: 'E6584A54-A1DD-D9B6-7CA4-627BAC2F6F0E',
     category: 'services',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Ante Dictum Mi Limited',
     amount: '20.90',
     timestamp: '2020-07-29T19:49:45-07:00',
@@ -434,7 +434,7 @@ export default [
   {
     id: '138CD03F-1730-9BAF-C183-1542817CCCC2',
     category: 'electronics',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Curabitur Associates',
     amount: '52.95',
     timestamp: '2020-10-20T19:34:20-07:00',
@@ -442,7 +442,7 @@ export default [
   {
     id: 'D9AFD733-04BA-2B18-2701-FE452801EE68',
     category: 'services',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Urna Nullam Consulting',
     amount: '4.18',
     timestamp: '2020-07-11T05:20:44-07:00',
@@ -450,7 +450,7 @@ export default [
   {
     id: 'A5954A2E-CC12-14D8-3D8B-E177B6FAD98B',
     category: 'electronics',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Enim Foundation',
     amount: '39.07',
     timestamp: '2019-07-05T12:37:44-07:00',
@@ -466,7 +466,7 @@ export default [
   {
     id: 'BF7E008F-74D0-266F-2173-E51165C1C357',
     category: 'restaurants',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Pede Nunc Associates',
     amount: '5.70',
     timestamp: '2019-08-19T02:43:31-07:00',
@@ -474,7 +474,7 @@ export default [
   {
     id: '0CDC3454-05C5-7F1A-6FB4-86A24C668B2A',
     category: 'travel',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Nulla LLC',
     amount: '66.02',
     timestamp: '2019-10-17T10:11:52-07:00',
@@ -506,7 +506,7 @@ export default [
   {
     id: '55A404F3-4896-5AE2-BC5A-774FCE002907',
     category: 'electronics',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Egestas Nunc Sed Corporation',
     amount: '88.56',
     timestamp: '2020-06-18T05:30:37-07:00',
@@ -522,7 +522,7 @@ export default [
   {
     id: '37969BBE-B78B-14A4-85D7-CE66DD85D63E',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Enim Nunc Consulting',
     amount: '84.94',
     timestamp: '2019-07-22T20:36:16-07:00',
@@ -554,7 +554,7 @@ export default [
   {
     id: '1B19FBA5-3E16-C704-0DB9-6351E105FB0F',
     category: 'market',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Fringilla Associates',
     amount: '1.88',
     timestamp: '2019-10-16T17:06:25-07:00',
@@ -562,7 +562,7 @@ export default [
   {
     id: '8A206056-9388-6B02-E20C-C92E07D982E2',
     category: 'health',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Augue Eu Limited',
     amount: '96.94',
     timestamp: '2020-11-17T13:15:58-08:00',
@@ -570,7 +570,7 @@ export default [
   {
     id: '701E381B-D418-6AD5-46D7-19D7C755E397',
     category: 'travel',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Mauris Erat Eget Incorporated',
     amount: '13.91',
     timestamp: '2019-05-12T19:11:42-07:00',
@@ -578,7 +578,7 @@ export default [
   {
     id: '44EA16DC-1C3D-C16F-F0E2-E41D984D4709',
     category: 'health',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Mi Fringilla Ltd',
     amount: '33.48',
     timestamp: '2019-10-02T03:22:12-07:00',
@@ -586,7 +586,7 @@ export default [
   {
     id: 'EAE70006-7DF3-63CD-D029-3D988F2DFF95',
     category: 'others',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Libero Donec Consectetuer Limited',
     amount: '93.76',
     timestamp: '2020-02-18T13:31:52-08:00',
@@ -594,7 +594,7 @@ export default [
   {
     id: 'DD0273E1-7E19-6144-C6B4-76A3E07C5652',
     category: 'market',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Feugiat Lorem Ipsum Limited',
     amount: '47.89',
     timestamp: '2019-10-08T19:36:53-07:00',
@@ -602,7 +602,7 @@ export default [
   {
     id: 'D4D6B3EB-1F17-9EB3-E95A-BA1B4B6440F6',
     category: 'electronics',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Donec Nibh Foundation',
     amount: '63.36',
     timestamp: '2021-01-09T11:20:59-08:00',
@@ -626,7 +626,7 @@ export default [
   {
     id: '9ABFBEF8-380F-34E2-F294-737777FC27D8',
     category: 'electronics',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Nunc Sollicitudin Industries',
     amount: '48.48',
     timestamp: '2020-07-13T17:15:30-07:00',
@@ -642,7 +642,7 @@ export default [
   {
     id: 'BDDB1465-4149-4C47-5C32-D41FD98D7BE9',
     category: 'others',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Gravida Sit Amet Company',
     amount: '67.56',
     timestamp: '2020-06-27T20:00:08-07:00',
@@ -658,7 +658,7 @@ export default [
   {
     id: 'A88A9044-FDEB-C196-95FE-5DB7A27305E4',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Consequat Enim Diam Foundation',
     amount: '40.84',
     timestamp: '2019-09-06T23:35:32-07:00',
@@ -674,7 +674,7 @@ export default [
   {
     id: '7DF1FBDB-57DA-256D-1A98-648FD28948D2',
     category: 'market',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Ornare Placerat Orci Ltd',
     amount: '91.67',
     timestamp: '2020-06-15T22:42:07-07:00',
@@ -690,7 +690,7 @@ export default [
   {
     id: 'B828B911-3EB2-CA2A-88C2-32D9707E8087',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Aliquam Erat Volutpat Corp.',
     amount: '72.07',
     timestamp: '2019-07-02T12:52:42-07:00',
@@ -698,7 +698,7 @@ export default [
   {
     id: '6FE8F6A2-B14B-94EB-DF01-2E7F43EEA27A',
     category: 'travel',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Mauris Institute',
     amount: '72.80',
     timestamp: '2019-11-04T08:14:57-08:00',
@@ -730,7 +730,7 @@ export default [
   {
     id: '064A001C-FE1D-60A8-4C5F-608125722F6E',
     category: 'electronics',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Vestibulum Incorporated',
     amount: '0.03',
     timestamp: '2019-05-10T05:14:58-07:00',
@@ -738,7 +738,7 @@ export default [
   {
     id: 'DC3EDAB3-3BE7-4629-7026-7EE80FA2793A',
     category: 'education',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Justo Nec Ante Associates',
     amount: '82.05',
     timestamp: '2019-04-23T15:58:58-07:00',
@@ -746,7 +746,7 @@ export default [
   {
     id: 'F6730DFA-3142-2B7F-A20E-374D8F4D2458',
     category: 'health',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Metus Vitae Corporation',
     amount: '1.85',
     timestamp: '2019-11-01T15:43:48-07:00',
@@ -754,7 +754,7 @@ export default [
   {
     id: 'C6E8308E-BC56-CA81-C760-7CEF2DEB02C8',
     category: 'market',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Mauris Blandit Enim Consulting',
     amount: '44.88',
     timestamp: '2020-09-06T05:51:36-07:00',
@@ -770,7 +770,7 @@ export default [
   {
     id: 'D536E25D-EE58-B203-13B9-2C0961AA401F',
     category: 'transport',
-    type: 'ingoing',
+    type: 'incoming',
     label: 'Nibh Vulputate Corp.',
     amount: '68.30',
     timestamp: '2019-12-31T22:24:27-08:00',
