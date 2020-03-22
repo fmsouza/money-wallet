@@ -1,4 +1,16 @@
-import { randomColor } from '~shared/styles';
+const CATEGORIES_COLORS = [
+  '#4F7CAC',
+  '#FF3E41',
+  '#8CB369',
+  '#3A015C',
+  '#000F08',
+  '#FF4D80',
+  '#322214',
+  '#FFD23F',
+  '#08BDBD',
+  '#03191E',
+  '#272727',
+];
 
 export const calculateTotalExpenses = statements =>
   statements
@@ -19,13 +31,15 @@ export const calculateTotalByCategory = statements =>
 export const totalBy = (filter, statements) =>
   statements.filter(filter).reduce((acc, item) => acc + Number(item.amount), 0);
 
-export const convertToPieSlices = (totalByCategory, onPressSlice) =>
-  Object.keys(totalByCategory).map(category => ({
+export const convertToPieSlices = (totalByCategory, onPressSlice) => {
+  let colorIndex = 0 % CATEGORIES_COLORS.length;
+  return Object.keys(totalByCategory).map(category => ({
     key: `pie-${category}`,
     title: category.charAt(0).toUpperCase() + category.slice(1),
     value: Number(totalByCategory[category]),
     svg: {
-      fill: randomColor(),
+      fill: CATEGORIES_COLORS[colorIndex++],
       onPress: onPressSlice || (() => {}),
     },
   }));
+};
