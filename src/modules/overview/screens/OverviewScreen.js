@@ -2,7 +2,8 @@ import React, { useLayoutEffect } from 'react';
 import { Alert, ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { useTheme } from '~shared/providers';
+import { useOnMount } from '~shared/hooks';
+import { useTheme, withProviders } from '~shared/providers';
 import { makeStyles } from '~shared/styles';
 import { Container, Icon } from '~shared/widgets';
 
@@ -12,6 +13,7 @@ import { Balance } from '~modules/history/widgets';
 import { InsightsSlider, OperationItem } from '~modules/overview/widgets';
 import { HelpScreen } from '~modules/support/screens';
 import { ProfileScreen } from '~modules/profile/screens';
+import { ProfileProvider, useProfile } from '~modules/profile/state';
 import { SettingsScreen } from '~modules/settings/screens';
 
 const useStyles = makeStyles(theme => ({
@@ -52,15 +54,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const OverviewScreen = () => {
+export const OverviewScreen = withProviders([ProfileProvider], () => {
   const styles = useStyles();
   const { theme } = useTheme();
   const { getText } = useLocale();
   const navigation = useNavigation();
+  const { data: profile, getProfile } = useProfile();
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: getText('overview.greeting', { name: 'Fred' }),
+      title: getText('overview.greeting', { name: profile.name }),
       headerRight: () => (
         <View style={styles.rightHeaderContainer}>
           <Icon.Button
@@ -72,6 +75,8 @@ export const OverviewScreen = () => {
       ),
     });
   }, [theme.colors.text, getText, navigation, styles.rightHeaderContainer]);
+
+  useOnMount(() => getProfile());
 
   const onHandleNotImplemented = () => {
     Alert.alert('Not implemented', 'This action was not implemented yet.');
@@ -123,6 +128,6 @@ export const OverviewScreen = () => {
       </View>
     </View>
   );
-};
+});
 
 OverviewScreen.route = 'Overview';

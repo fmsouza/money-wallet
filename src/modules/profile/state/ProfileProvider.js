@@ -31,7 +31,7 @@ export const ProfileProvider = props => {
     profile,
     getProfile: async () => {
       updateLoading(true);
-      await sleep(1000);
+      await sleep(100);
       updateProfile(DUMMY_PROFILE);
       updateLoading(false);
     },
