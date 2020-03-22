@@ -2,9 +2,13 @@ import React, { useLayoutEffect } from 'react';
 import { Alert, ScrollView, Share } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import { useOnMount } from '~shared/hooks';
+import { withProviders } from '~shared/providers';
 import { makeStyles } from '~shared/styles';
 import { Container, Icon, ListItem } from '~shared/widgets';
+
 import { useLocale } from '~modules/profile/intl';
+import { ProfileProvider, useProfile } from '~modules/profile/state';
 import { AccountDetails } from '~modules/profile/widgets';
 
 const useStyles = makeStyles(theme => ({
@@ -20,10 +24,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const ProfileScreen = () => {
+export const ProfileScreen = withProviders([ProfileProvider], () => {
   const styles = useStyles();
   const { getText } = useLocale();
   const navigation = useNavigation();
+  const { data: profile, loading, error, getProfile } = useProfile();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -31,20 +36,17 @@ export const ProfileScreen = () => {
     });
   }, [getText, navigation]);
 
-  const getIcon = (name, type) => <Icon name={name} type={type} size={32} />;
+  useOnMount(() => getProfile());
 
-  const bankName = 'National Bank';
-  const bankNumber = '340';
-  const accountNumber = '32455-3';
-  const routingNumber = '0001';
+  const getIcon = (name, type) => <Icon name={name} type={type} size={32} />;
 
   const onHandleShare = () =>
     Share.share({
       message: getText('profile.shareableAccountText', {
-        bankName,
-        bankNumber,
-        accountNumber,
-        routingNumber,
+        bankName: profile.bankName,
+        bankNumber: profile.bankNumber,
+        accountNumber: profile.accountNumber,
+        routingNumber: profile.routingNumber,
       }),
     });
 
@@ -56,10 +58,10 @@ export const ProfileScreen = () => {
     <Container style={styles.container}>
       <ScrollView>
         <AccountDetails
-          bankName={bankName}
-          bankNumber={bankNumber}
-          accountNumber={accountNumber}
-          routingNumber={routingNumber}
+          bankName={profile.bankName}
+          bankNumber={profile.bankNumber}
+          accountNumber={profile.accountNumber}
+          routingNumber={profile.routingNumber}
         />
         <ListItem
           leading={getIcon('share', 'md')}
@@ -75,6 +77,6 @@ export const ProfileScreen = () => {
       </ScrollView>
     </Container>
   );
-};
+});
 
 ProfileScreen.route = 'Profile';
