@@ -40,6 +40,13 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'bold',
     fontSize: 18,
   },
+  mainContent: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flex: 1,
+  },
 }));
 
 const getIcon = category => {
@@ -72,7 +79,7 @@ export const TransactionItem = ({ tx }) => {
   const { theme } = useTheme();
   return (
     <View style={styles.container}>
-      <View style={styles.leftColumn}>
+      <View style={styles.leading}>
         <View style={styles.iconWrapper}>
           <Icon
             name={getIcon(tx.category)}
@@ -82,10 +89,14 @@ export const TransactionItem = ({ tx }) => {
           />
         </View>
       </View>
-      <View style={styles.rightColumn}>
-        <Text style={styles.categoryLabel}>{tx.category}</Text>
-        <Text style={styles.label}>{tx.label}</Text>
-        <Text style={styles.amountLabel}>{Number(tx.amount).toFixed(2)}</Text>
+      <View style={styles.mainContent}>
+        <View style={styles.rightColumn}>
+          <Text style={styles.categoryLabel}>{tx.category}</Text>
+          <Text style={styles.label}>{tx.label}</Text>
+        </View>
+        <View style={styles.trailing}>
+          <Text style={styles.amountLabel}>{Number(tx.amount).toFixed(2)}</Text>
+        </View>
       </View>
     </View>
   );
