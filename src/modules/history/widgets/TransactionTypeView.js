@@ -49,7 +49,20 @@ const useStyles = makeStyles(theme => ({
     height: 16,
     backgroundColor: 'red',
   },
+  balanceRow: {
+    width: '100%',
+    borderTopWidth: 1,
+    borderColor: theme.colors.border,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: theme.padding,
+  },
 }));
+
+const INCOME_COLOR = '#85bb65';
+const EXPENSE_COLOR = '#bb0023';
 
 export const TransactionTypeView = ({ statements }) => {
   const styles = useStyles();
@@ -59,6 +72,7 @@ export const TransactionTypeView = ({ statements }) => {
   const expenses = totalBy(stmn => stmn.type === 'outgoing', statements);
   const total = incoming + expenses;
   const barBaseWidth = (theme.maxWidth * 0.5) / total;
+  const balance = incoming - expenses;
 
   return (
     <View style={styles.container}>
@@ -70,7 +84,7 @@ export const TransactionTypeView = ({ statements }) => {
         <View style={flatten(styles.column, styles.barColumn)}>
           <View
             style={flatten(styles.volumeBar, {
-              backgroundColor: '#85bb65',
+              backgroundColor: INCOME_COLOR,
               width: barBaseWidth * incoming,
             })}
           />
@@ -85,11 +99,22 @@ export const TransactionTypeView = ({ statements }) => {
         <View style={flatten(styles.column, styles.barColumn)}>
           <View
             style={flatten(styles.volumeBar, {
-              backgroundColor: '#bb0023',
+              backgroundColor: EXPENSE_COLOR,
               width: barBaseWidth * expenses,
             })}
           />
         </View>
+      </View>
+      <Space height={8} />
+      <View style={styles.balanceRow}>
+        <Text style={styles.title}>Balance</Text>
+        <Text
+          style={flatten(
+            styles.value,
+            balance < 0 && { color: EXPENSE_COLOR },
+          )}>
+          {balance.toFixed(2)}
+        </Text>
       </View>
     </View>
   );
