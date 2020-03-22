@@ -6,6 +6,8 @@ import { useTheme } from '~shared/providers';
 import { makeStyles } from '~shared/styles';
 import { Icon } from '~shared/widgets';
 
+import { useLocale } from '~modules/history/intl';
+
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
@@ -77,6 +79,7 @@ const getIcon = category => {
 export const TransactionItem = ({ tx }) => {
   const styles = useStyles();
   const { theme } = useTheme();
+  const { selectedCurrency } = useLocale();
   return (
     <View style={styles.container}>
       <View style={styles.leading}>
@@ -95,7 +98,9 @@ export const TransactionItem = ({ tx }) => {
           <Text style={styles.label}>{tx.label}</Text>
         </View>
         <View style={styles.trailing}>
-          <Text style={styles.amountLabel}>{Number(tx.amount).toFixed(2)}</Text>
+          <Text style={styles.amountLabel}>
+            {selectedCurrency.symbol} {Number(tx.amount).toFixed(2)}
+          </Text>
         </View>
       </View>
     </View>
