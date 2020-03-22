@@ -8,6 +8,7 @@ export default {
   },
 
   insights: {
-    title: 'Insights',
+    title: 'Estatísticas',
+    topExpenses: 'Maiores {{size}} gastos',
   },
 };

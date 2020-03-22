@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
-import PropTypes from 'prop-types';
 
 import { withProviders } from '~shared/providers';
 import { Icon } from '~shared/widgets';

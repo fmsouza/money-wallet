@@ -2,9 +2,8 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { flatten, makeStyles } from '~shared/styles';
-import { Space } from '~shared/widgets';
-import { useTheme } from '~shared/providers';
+import { makeStyles } from '~shared/styles';
+import { useLocale } from '~modules/history/intl';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -40,6 +39,7 @@ const useStyles = makeStyles(theme => ({
 
 export const TopExpensiveStatements = ({ size, statements }) => {
   const styles = useStyles();
+  const { getText, selectedCurrency } = useLocale();
 
   const topStatements = statements
     .sort((st1, st2) => Number(st2.amount) - Number(st1.amount))
@@ -47,13 +47,17 @@ export const TopExpensiveStatements = ({ size, statements }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Top {size} expenses</Text>
+      <Text style={styles.header}>
+        {getText('insights.topExpenses', { size })}
+      </Text>
       {topStatements.map((stmnt, index) => (
         <View key={index} style={styles.statementContainer}>
           <Text style={styles.statementLabel}>
             {index + 1}. {stmnt.label}
           </Text>
-          <Text style={styles.statementAmount}>${stmnt.amount}</Text>
+          <Text style={styles.statementAmount}>
+            {selectedCurrency.symbol} {stmnt.amount}
+          </Text>
         </View>
       ))}
     </View>
