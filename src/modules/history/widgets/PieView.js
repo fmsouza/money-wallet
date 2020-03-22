@@ -16,11 +16,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start', // eslint-disable-line sonarjs/no-duplicate-string
+    justifyContent: 'space-between',
   },
   pieChart: {
-    width: theme.maxWidth * 0.4,
-    height: theme.maxWidth * 0.4,
+    width: theme.maxWidth * 0.45,
+    height: theme.maxWidth * 0.45,
   },
   items: {
     marginLeft: theme.margin * 4,
