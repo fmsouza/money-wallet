@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
   statementLabel: {
     marginVertical: theme.margin,
     fontSize: 16,
+    maxWidth: '60%',
   },
   statementAmount: {
     fontSize: 16,
@@ -52,7 +53,10 @@ export const TopExpensiveStatements = ({ size, statements }) => {
       </Text>
       {topStatements.map((stmnt, index) => (
         <View key={index} style={styles.statementContainer}>
-          <Text style={styles.statementLabel}>
+          <Text
+            style={styles.statementLabel}
+            numberOfLines={1}
+            ellipsizeMode="tail">
             {index + 1}. {stmnt.label}
           </Text>
           <Text style={styles.statementAmount}>
