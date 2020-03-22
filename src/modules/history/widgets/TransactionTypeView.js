@@ -46,6 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
   volumeBar: {
     width: theme.maxWidth * 0.5,
+    borderRadius: 16,
     height: 16,
     backgroundColor: 'red',
   },
