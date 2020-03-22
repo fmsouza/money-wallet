@@ -54,13 +54,11 @@ const useStyles = makeStyles(theme => ({
   },
   contentContainer: {
     flex: 1,
-    height: theme.maxHeight,
   },
   monthViewScroll: {
     width: theme.maxWidth,
   },
   monthViewContainer: {
-    height: theme.maxHeight,
     paddingVertical: theme.padding * 4,
     display: 'flex',
     flexDirection: 'column',
