@@ -16,7 +16,11 @@ import { withProviders } from '~shared/providers';
 
 import { useLocale } from '~modules/history/intl';
 import { HistoryProvider, useInsights } from '~modules/history/state';
-import { PieView, TransactionTypeView } from '~modules/history/widgets';
+import {
+  PieView,
+  TopExpensiveStatements,
+  TransactionTypeView,
+} from '~modules/history/widgets';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -122,6 +126,8 @@ export const InsightsScreen = withProviders([HistoryProvider], () => {
             <PieView statements={statements} />
             <Space height={32} />
             <TransactionTypeView statements={statements} />
+            <Space height={32} />
+            <TopExpensiveStatements statements={statements} />
           </Container>
         </ScrollView>
       )}
