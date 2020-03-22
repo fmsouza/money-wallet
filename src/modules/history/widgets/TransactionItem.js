@@ -97,7 +97,7 @@ TransactionItem.propTypes = {
     category: PropTypes.string,
     type: PropTypes.string,
     label: PropTypes.string,
-    amount: PropTypes.number,
+    amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     datestamp: PropTypes.string,
   }).isRequired,
 };
