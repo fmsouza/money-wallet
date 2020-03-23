@@ -1,25 +1,22 @@
 import React from 'react';
-import { Dimensions, Text, View } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
+
 import { makeStyles } from '~shared/styles';
-
-const { height, width } = Dimensions.get('window');
-const slideHeight = height * 0.4;
-const slideWidth = width * 0.8;
-
-const MARGIN = 8;
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    height: slideHeight,
-    backgroundColor: theme.colors.border,
-    margin: MARGIN,
-    width: slideWidth,
-    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    width: theme.maxWidth - theme.margin * 2,
+  },
+  card: {
+    width: theme.maxWidth * 0.8,
+    height: theme.maxWidth * 0.7,
+    padding: theme.padding * 2,
     borderRadius: 6,
     shadowRadius: 3,
     shadowOpacity: 0.25,
@@ -30,24 +27,17 @@ const useStyles = makeStyles(theme => ({
     },
     elevation: 3,
   },
-  title: {
-    fontSize: 32,
-  },
 }));
 
-export const SliderItem = ({ item }) => {
+export const SliderItem = ({ children }) => {
   const styles = useStyles();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{item.title}</Text>
+      <View style={styles.card}>{children}</View>
     </View>
   );
 };
 
-SliderItem.WIDTH = slideWidth + MARGIN * 2;
-
 SliderItem.propTypes = {
-  item: PropTypes.shape({
-    title: PropTypes.string,
-  }).isRequired,
+  children: PropTypes.node.isRequired,
 };

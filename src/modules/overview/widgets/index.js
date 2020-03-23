@@ -1,2 +1,2 @@
-export * from './InsightsSlider';
 export * from './OperationItem';
+export * from './SliderItem';

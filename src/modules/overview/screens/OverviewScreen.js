@@ -1,20 +1,25 @@
 import React, { useLayoutEffect } from 'react';
-import { Alert, ScrollView, View } from 'react-native';
+import { Alert, ScrollView, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import SwiperFlatList from 'react-native-swiper-flatlist';
 
 import { useOnMount } from '~shared/hooks';
 import { useTheme, withProviders } from '~shared/providers';
 import { makeStyles } from '~shared/styles';
 import { Container, Icon } from '~shared/widgets';
 
-import { useLocale } from '~modules/overview/intl';
 import { InsightsScreen, StatementsScreen } from '~modules/history/screens';
 import { Balance } from '~modules/history/widgets';
-import { InsightsSlider, OperationItem } from '~modules/overview/widgets';
-import { HelpScreen } from '~modules/support/screens';
+
+import { useLocale } from '~modules/overview/intl';
+import { OperationItem, SliderItem } from '~modules/overview/widgets';
+
 import { ProfileScreen } from '~modules/profile/screens';
 import { ProfileProvider, useProfile } from '~modules/profile/state';
+
 import { SettingsScreen } from '~modules/settings/screens';
+
+import { HelpScreen } from '~modules/support/screens';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -74,7 +79,13 @@ export const OverviewScreen = withProviders([ProfileProvider], () => {
         </View>
       ),
     });
-  }, [theme.colors.text, getText, navigation, styles.rightHeaderContainer]);
+  }, [
+    theme.colors.text,
+    getText,
+    navigation,
+    styles.rightHeaderContainer,
+    profile.name,
+  ]);
 
   useOnMount(() => getProfile());
 
@@ -89,7 +100,21 @@ export const OverviewScreen = withProviders([ProfileProvider], () => {
           <View style={styles.balanceWrapper}>
             <Balance />
           </View>
-          <InsightsSlider />
+          <SwiperFlatList
+            renderAll
+            showPagination
+            paginationDefaultColor={theme.colors.border}
+            paginationActiveColor={theme.colors.primary}>
+            <SliderItem>
+              <Text>Slide 1</Text>
+            </SliderItem>
+            <SliderItem>
+              <Text>Slide 2</Text>
+            </SliderItem>
+            <SliderItem>
+              <Text>Slide 3</Text>
+            </SliderItem>
+          </SwiperFlatList>
         </View>
       </Container>
       <View style={styles.footer}>
