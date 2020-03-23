@@ -109,7 +109,8 @@ export const OverviewScreen = withProviders([ProfileProvider], () => {
             showPagination
             paginationDefaultColor={theme.colors.invertedText}
             paginationActiveColor={theme.colors.primaryDarker}>
-            <SliderItem>
+            <SliderItem
+              onPress={() => navigation.navigate(StatementsScreen.route)}>
               <LatestTransaction />
             </SliderItem>
             <SliderItem>

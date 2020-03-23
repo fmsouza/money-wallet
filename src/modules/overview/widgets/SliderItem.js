@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { makeStyles } from '~shared/styles';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -29,15 +30,22 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const SliderItem = ({ children }) => {
+export const SliderItem = ({ children, onPress }) => {
   const styles = useStyles();
   return (
-    <View style={styles.container}>
-      <View style={styles.card}>{children}</View>
-    </View>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.container}>
+        <View style={styles.card}>{children}</View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
 SliderItem.propTypes = {
   children: PropTypes.node.isRequired,
+  onPress: PropTypes.func,
+};
+
+SliderItem.defaultProps = {
+  onPress: () => {},
 };
