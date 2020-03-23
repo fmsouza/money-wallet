@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 
-import { withProviders } from '~shared/providers';
-import { Icon } from '~shared/widgets';
+import { useTheme, withProviders } from '~shared/providers';
 import { makeStyles } from '~shared/styles';
+import { Icon } from '~shared/widgets';
 
 import { useLocale } from '~modules/history/intl';
 import { HistoryProvider, useGetBalance } from '~modules/history/state';
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.primaryDarker,
     height: 80,
     marginVertical: 10,
     paddingLeft: 20,
@@ -36,22 +36,25 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontSize: 16,
+    color: theme.colors.lightText,
   },
   balance: {
     fontSize: 24,
     lineHeight: 24,
     fontWeight: 'bold',
+    color: theme.colors.lightText,
   },
   placeholder: {
-    backgroundColor: '#222222',
+    backgroundColor: theme.colors.lightText,
     width: 100,
-    height: 24,
+    height: 20,
     borderRadius: 20,
   },
 }));
 
 export const Balance = withProviders([HistoryProvider], () => {
   const styles = useStyles();
+  const { theme } = useTheme();
   const [visible, setVisibility] = useState(false);
   const { getText, selectedCurrency } = useLocale();
   const { data: balance, updateBalance } = useGetBalance();
@@ -73,6 +76,7 @@ export const Balance = withProviders([HistoryProvider], () => {
         <Icon.Button
           name={visible ? 'eye' : 'eye-off'}
           onPress={handleToggleVisibility}
+          color={theme.colors.lightText}
         />
       </View>
     </View>

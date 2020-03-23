@@ -5,9 +5,14 @@ const { width: maxWidth, height: maxHeight } = Dimensions.get('window');
 
 export const Color = {
   primary: '#074F57',
+  primaryDarker: color('#074F57')
+    .darken(0.4)
+    .hex()
+    .toString(),
   secondary: '#D4C2FC',
   background: '#f2f2f2',
-  text: '#1c1c1e',
+  darkText: '#1c1c1e',
+  lightText: '#f2f2f2',
   white: '#ffffff',
   black: '#000000',
   border: '#dddddd',
@@ -20,23 +25,20 @@ export const lightTheme = {
   maxWidth,
   maxHeight,
   statusBar: {
-    barStyle: 'dark-content',
-    backgroundColor: color(Color.background)
-      .darken(0.4)
-      .hex()
-      .toString(),
+    barStyle: 'light-content',
+    backgroundColor: Color.primaryDarker,
   },
   navbar: {
     headerStyle: {
       shadowOpacity: 0,
       elevation: 0,
-      backgroundColor: Color.backgroud,
+      backgroundColor: Color.primary,
     },
     headerTitleStyle: {
       fontWeight: 'bold',
-      color: Color.text,
+      color: Color.lightText,
     },
-    headerTintColor: Color.text,
+    headerTintColor: Color.lightText,
   },
 };
 

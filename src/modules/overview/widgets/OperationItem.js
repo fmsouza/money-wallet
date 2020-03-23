@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import PropTypes from 'prop-types';
 
+import { useTheme } from '~shared/providers';
 import { makeStyles } from '~shared/styles';
 import { Icon } from '~shared/widgets';
 
@@ -11,25 +12,25 @@ const useStyles = makeStyles(theme => ({
     marginHorizontal: theme.margin / 2,
     height: 80,
     width: 100,
-    borderWidth: 2,
     borderRadius: 5,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: theme.colors.border,
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.primaryDarker,
   },
   title: {
     fontSize: 16,
+    color: theme.colors.lightText,
   },
 }));
 
 export const OperationItem = ({ title, icon, iconType, onPress }) => {
   const styles = useStyles();
+  const { theme } = useTheme();
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
-        <Icon name={icon} type={iconType} />
+        <Icon name={icon} type={iconType} color={theme.colors.lightText} />
         <Text style={styles.title}>{title}</Text>
       </View>
     </TouchableWithoutFeedback>

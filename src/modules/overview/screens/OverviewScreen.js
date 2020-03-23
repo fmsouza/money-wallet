@@ -22,15 +22,19 @@ import { SettingsScreen } from '~modules/settings/screens';
 import { HelpScreen } from '~modules/support/screens';
 
 const useStyles = makeStyles(theme => ({
-  container: {
+  wrapper: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
     flex: 1,
+    backgroundColor: theme.colors.primary,
   },
   rightHeaderContainer: {
     marginRight: 10,
+  },
+  container: {
+    backgroundColor: theme.colors.primary,
   },
   content: {
     width: '100%',
@@ -73,14 +77,14 @@ export const OverviewScreen = withProviders([ProfileProvider], () => {
         <View style={styles.rightHeaderContainer}>
           <Icon.Button
             name="account-circle"
-            color={theme.colors.text}
+            color={theme.navbar.headerTintColor}
             onPress={() => navigation.navigate(ProfileScreen.route)}
           />
         </View>
       ),
     });
   }, [
-    theme.colors.text,
+    theme.navbar.headerTintColor,
     getText,
     navigation,
     styles.rightHeaderContainer,
@@ -94,8 +98,8 @@ export const OverviewScreen = withProviders([ProfileProvider], () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Container>
+    <View style={styles.wrapper}>
+      <Container style={styles.container}>
         <View style={styles.content}>
           <View style={styles.balanceWrapper}>
             <Balance />
@@ -103,8 +107,8 @@ export const OverviewScreen = withProviders([ProfileProvider], () => {
           <SwiperFlatList
             renderAll
             showPagination
-            paginationDefaultColor={theme.colors.border}
-            paginationActiveColor={theme.colors.primary}>
+            paginationDefaultColor={theme.colors.lightText}
+            paginationActiveColor={theme.colors.primaryDarker}>
             <SliderItem>
               <Text>Slide 1</Text>
             </SliderItem>
