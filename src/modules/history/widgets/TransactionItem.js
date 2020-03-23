@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
-import { useTheme } from '~shared/providers';
+import { formatDistanceToNow } from 'date-fns';
 
+import { useTheme } from '~shared/providers';
 import { makeStyles } from '~shared/styles';
 import { Icon } from '~shared/widgets';
 
-import { useLocale } from '~modules/history/intl';
 import { getIconName } from '~modules/history/utils';
 
 const useStyles = makeStyles(theme => ({
@@ -38,6 +38,10 @@ const useStyles = makeStyles(theme => ({
     color: theme.colors.text,
     fontSize: 16,
   },
+  timestamp: {
+    color: theme.colors.text,
+    fontSize: 14,
+  },
   amountLabel: {
     color: theme.colors.text,
     fontWeight: 'bold',
@@ -50,12 +54,21 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     flex: 1,
   },
+  rightColumn: {
+    maxWidth: '60%',
+  },
+  trailing: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    width: 100,
+  },
 }));
 
 export const TransactionItem = ({ tx }) => {
   const styles = useStyles();
   const { theme } = useTheme();
-  const { selectedCurrency } = useLocale();
   return (
     <View style={styles.container}>
       <View style={styles.leading}>
@@ -71,12 +84,15 @@ export const TransactionItem = ({ tx }) => {
       <View style={styles.mainContent}>
         <View style={styles.rightColumn}>
           <Text style={styles.categoryLabel}>{tx.category}</Text>
-          <Text style={styles.label}>{tx.label}</Text>
+          <Text style={styles.label} numberOfLines={1} ellipsizeMode="tail">
+            {tx.label}
+          </Text>
+          <Text style={styles.timestamp}>
+            {formatDistanceToNow(new Date(tx.timestamp))}
+          </Text>
         </View>
         <View style={styles.trailing}>
-          <Text style={styles.amountLabel}>
-            {selectedCurrency.symbol} {Number(tx.amount).toFixed(2)}
-          </Text>
+          <Text style={styles.amountLabel}>{Number(tx.amount).toFixed(2)}</Text>
         </View>
       </View>
     </View>
@@ -90,6 +106,6 @@ TransactionItem.propTypes = {
     type: PropTypes.string,
     label: PropTypes.string,
     amount: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    datestamp: PropTypes.string,
+    timestamp: PropTypes.string,
   }).isRequired,
 };
