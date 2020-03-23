@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const TopExpensiveStatements = ({ size, statements }) => {
+export const TopExpensiveStatements = React.memo(({ size, statements }) => {
   const styles = useStyles();
   const { getText, selectedCurrency } = useLocale();
 
@@ -66,7 +66,7 @@ export const TopExpensiveStatements = ({ size, statements }) => {
       ))}
     </View>
   );
-};
+});
 
 TopExpensiveStatements.propTypes = {
   size: PropTypes.number,

@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const PieView = ({ statements }) => {
+export const PieView = React.memo(({ statements }) => {
   const styles = useStyles();
 
   const total = calculateTotalExpenses(statements);
@@ -79,7 +79,7 @@ export const PieView = ({ statements }) => {
       </View>
     </View>
   );
-};
+});
 
 PieView.propTypes = {
   statements: PropTypes.arrayOf(PropTypes.any),

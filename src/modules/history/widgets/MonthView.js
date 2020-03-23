@@ -35,34 +35,36 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const MonthView = ({ isFirst, isLast, month, statements }) => {
-  const styles = useStyles();
+export const MonthView = React.memo(
+  ({ isFirst, isLast, month, statements }) => {
+    const styles = useStyles();
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.pagination}>
-        <View style={styles.leading}>
-          {!isFirst && <Icon name="chevron-left" />}
+    return (
+      <View style={styles.container}>
+        <View style={styles.pagination}>
+          <View style={styles.leading}>
+            {!isFirst && <Icon name="chevron-left" />}
+          </View>
+          <View style={styles.middle}>
+            <Text style={styles.monthLabel}>{format(month, 'MMM yyyy')}</Text>
+          </View>
+          <View style={styles.trailing}>
+            {!isLast && <Icon name="chevron-right" />}
+          </View>
         </View>
-        <View style={styles.middle}>
-          <Text style={styles.monthLabel}>{format(month, 'MMM yyyy')}</Text>
-        </View>
-        <View style={styles.trailing}>
-          {!isLast && <Icon name="chevron-right" />}
-        </View>
+        <ScrollView contentContainerStyle={styles.monthViewContainer}>
+          <Container style={styles.contentContainer}>
+            <PieView statements={statements} />
+            <Space height={32} />
+            <TransactionTypeView statements={statements} />
+            <Space height={32} />
+            <TopExpensiveStatements statements={statements} />
+          </Container>
+        </ScrollView>
       </View>
-      <ScrollView contentContainerStyle={styles.monthViewContainer}>
-        <Container style={styles.contentContainer}>
-          <PieView statements={statements} />
-          <Space height={32} />
-          <TransactionTypeView statements={statements} />
-          <Space height={32} />
-          <TopExpensiveStatements statements={statements} />
-        </Container>
-      </ScrollView>
-    </View>
-  );
-};
+    );
+  },
+);
 
 MonthView.propTypes = {
   isFirst: PropTypes.bool,

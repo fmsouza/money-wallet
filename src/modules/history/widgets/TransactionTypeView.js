@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
 const INCOME_COLOR = '#85bb65';
 const EXPENSE_COLOR = '#bb0023';
 
-export const TransactionTypeView = ({ statements }) => {
+export const TransactionTypeView = React.memo(({ statements }) => {
   const styles = useStyles();
   const { theme } = useTheme();
   const { getText, selectedCurrency } = useLocale();
@@ -125,7 +125,7 @@ export const TransactionTypeView = ({ statements }) => {
       </View>
     </View>
   );
-};
+});
 
 TransactionTypeView.propTypes = {
   statements: PropTypes.arrayOf(PropTypes.any),
