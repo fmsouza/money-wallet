@@ -1,5 +1,3 @@
 export * from './Balance';
-export * from './PieView';
-export * from './TopExpensiveStatements';
+export * from './MonthView';
 export * from './TransactionItem';
-export * from './TransactionTypeView';

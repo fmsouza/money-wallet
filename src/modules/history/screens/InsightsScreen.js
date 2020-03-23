@@ -16,11 +16,7 @@ import { withProviders } from '~shared/providers';
 
 import { useLocale } from '~modules/history/intl';
 import { HistoryProvider, useInsights } from '~modules/history/state';
-import {
-  PieView,
-  TopExpensiveStatements,
-  TransactionTypeView,
-} from '~modules/history/widgets';
+import { MonthView } from '~modules/history/widgets';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -55,16 +51,6 @@ const useStyles = makeStyles(theme => ({
   contentContainer: {
     flex: 1,
   },
-  monthViewScroll: {
-    width: theme.maxWidth,
-  },
-  monthViewContainer: {
-    paddingVertical: theme.padding * 4,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
 }));
 
 export const InsightsScreen = withProviders([HistoryProvider], () => {
@@ -90,10 +76,6 @@ export const InsightsScreen = withProviders([HistoryProvider], () => {
 
   const handleSelectMonth = month => setSelectedMonth(month);
 
-  const refreshControl = (
-    <RefreshControl refreshing={loading} onRefresh={getInsights} />
-  );
-
   const statements = getMonthStatements(selectedMonth);
 
   return (
@@ -115,20 +97,7 @@ export const InsightsScreen = withProviders([HistoryProvider], () => {
           ))}
         </ScrollView>
       </View>
-      {statements.length > 0 && (
-        <ScrollView
-          style={styles.monthViewScroll}
-          contentContainerStyle={styles.monthViewContainer}
-          refreshControl={refreshControl}>
-          <Container style={styles.contentContainer}>
-            <PieView statements={statements} />
-            <Space height={32} />
-            <TransactionTypeView statements={statements} />
-            <Space height={32} />
-            <TopExpensiveStatements statements={statements} />
-          </Container>
-        </ScrollView>
-      )}
+      {statements.length > 0 && <MonthView statements={statements} />}
     </View>
   );
 });
