@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 const CATEGORIES_COLORS = [
   '#4F7CAC',
   '#FF3E41',
@@ -15,16 +17,14 @@ const CATEGORIES_COLORS = [
 export const calculateTotalExpenses = statements =>
   statements
     .filter(st => st.type === 'outgoing')
-    .map(st => Number(st.amount))
-    .reduce((acc, amount) => acc + amount, 0);
+    .reduce((acc, st) => acc + Number(st.amount), 0);
 
 export const calculateTotalByCategory = statements =>
   statements
     .filter(stmn => Number(stmn.amount) > 0 && stmn.type === 'outgoing')
     .reduce((map, statement) => {
-      map[statement.category] = map[statement.category]
-        ? map[statement.category] + Number(statement.amount)
-        : Number(statement.amount);
+      if (!map[statement.category]) map[statement.category] = 0;
+      map[statement.category] += Number(statement.amount);
       return map;
     }, {});
 
@@ -43,3 +43,16 @@ export const convertToPieSlices = (totalByCategory, onPressSlice) => {
     },
   }));
 };
+
+const BUCKET_KEY_FORMAT = 'MMM-yyyy';
+
+export const groupStatementsByMonth = statements =>
+  statements.reduce((map, stmnt) => {
+    const month = format(new Date(stmnt.timestamp), BUCKET_KEY_FORMAT);
+    if (!map[month]) map[month] = [];
+    map[month].push(stmnt);
+    return map;
+  }, {});
+
+export const getStatementsFromBucket = (month, buckets) =>
+  buckets[format(month, BUCKET_KEY_FORMAT)];

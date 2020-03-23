@@ -1,6 +1,6 @@
-import React, { useLayoutEffect, useRef, useEffect, useState } from 'react';
-import { Text } from 'react-native';
+import React, { useLayoutEffect, useRef, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { format, isThisMonth } from 'date-fns';
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
 import { useOnMount } from '~shared/hooks';
@@ -8,8 +8,11 @@ import { withProviders } from '~shared/providers';
 
 import { useLocale } from '~modules/history/intl';
 import { HistoryProvider, useInsights } from '~modules/history/state';
+import {
+  getStatementsFromBucket,
+  groupStatementsByMonth,
+} from '~modules/history/utils';
 import { MonthView } from '~modules/history/widgets';
-import { format, isThisMonth } from 'date-fns';
 
 export const InsightsScreen = withProviders([HistoryProvider], () => {
   const { getText } = useLocale();
@@ -18,6 +21,7 @@ export const InsightsScreen = withProviders([HistoryProvider], () => {
   const {
     loading,
     error,
+    statements,
     getInsights,
     months,
     getMonthStatements,
@@ -38,6 +42,8 @@ export const InsightsScreen = withProviders([HistoryProvider], () => {
     }
   }, [months]);
 
+  const buckets = groupStatementsByMonth(statements);
+
   return (
     <SwiperFlatList
       renderAll
@@ -47,7 +53,7 @@ export const InsightsScreen = withProviders([HistoryProvider], () => {
       renderItem={({ item, index }) => (
         <MonthView
           month={item}
-          statements={getMonthStatements(item)}
+          statements={getStatementsFromBucket(item, buckets)}
           isFirst={index === 0}
           isLast={index === months.length - 1}
         />
