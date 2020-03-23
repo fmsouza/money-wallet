@@ -3,6 +3,7 @@ import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { makeStyles } from '~shared/styles';
+import { useTheme } from '~shared/providers';
 import { Icon } from '~shared/widgets';
 
 const useStyles = makeStyles(theme => ({
@@ -26,17 +27,20 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontSize: 16,
+    color: theme.colors.text,
   },
   descriptionContainer: {},
   description: {
+    color: theme.colors.text,
     padding: theme.padding * 2,
     paddingBottom: theme.padding * 4,
   },
 }));
 
 export const Expandable = ({ title, description }) => {
-  const [visible, setVisible] = useState(false);
   const styles = useStyles();
+  const { theme } = useTheme();
+  const [visible, setVisible] = useState(false);
 
   const handleHeaderPress = () => {
     setVisible(v => !v);
@@ -47,7 +51,10 @@ export const Expandable = ({ title, description }) => {
       <TouchableWithoutFeedback onPress={handleHeaderPress}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{title}</Text>
-          <Icon name={visible ? 'chevron-up' : 'chevron-down'} />
+          <Icon
+            name={visible ? 'chevron-up' : 'chevron-down'}
+            color={theme.colors.text}
+          />
         </View>
       </TouchableWithoutFeedback>
       {visible && (

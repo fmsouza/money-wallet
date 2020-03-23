@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontSize: 16,
-    color: theme.colors.lightText,
+    color: theme.colors.invertedText,
   },
 }));
 
@@ -30,7 +30,7 @@ export const OperationItem = ({ title, icon, iconType, onPress }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
-        <Icon name={icon} type={iconType} color={theme.colors.lightText} />
+        <Icon name={icon} type={iconType} color={theme.colors.invertedText} />
         <Text style={styles.title}>{title}</Text>
       </View>
     </TouchableWithoutFeedback>

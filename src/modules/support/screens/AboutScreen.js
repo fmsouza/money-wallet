@@ -2,8 +2,15 @@ import React, { useLayoutEffect } from 'react';
 import { ScrollView, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { Container } from '~shared/widgets';
+import { makeStyles } from '~shared/styles';
+import { Container, Space } from '~shared/widgets';
 import { useLocale } from '~modules/support/intl';
+
+const useStyles = makeStyles(theme => ({
+  text: {
+    color: theme.colors.text,
+  },
+}));
 
 export const AboutScreen = props => {
   const navigation = useNavigation();
@@ -30,6 +37,7 @@ export const AboutScreen = props => {
           Vivamus metus tellus, tincidunt at magna lacinia, maximus iaculis
           tortor. Pellentesque et leo ultricies, posuere lectus et, porta risus.
         </Text>
+        <Space height={16} />
         <Text>
           Aliquam erat volutpat. Cras pretium eget justo eget accumsan.
           Phasellus porttitor ipsum non elit fringilla faucibus. Vestibulum et
@@ -39,6 +47,7 @@ export const AboutScreen = props => {
           Donec rutrum elit nec erat varius congue. Aenean pellentesque justo
           nec risus laoreet aliquam.
         </Text>
+        <Space height={16} />
         <Text>
           Aenean pharetra pellentesque dui, id ullamcorper risus convallis ut.
           Vivamus commodo sit amet felis id vehicula. In hac habitasse platea
@@ -47,6 +56,7 @@ export const AboutScreen = props => {
           velit, semper quis cursus at, laoreet in leo. Nulla pretium sapien in
           eros ornare auctor.
         </Text>
+        <Space height={16} />
         <Text>
           Ut mauris metus, tristique auctor nibh ut, vehicula malesuada lacus.
           Integer ligula justo, tincidunt ut orci non, faucibus vestibulum quam.
@@ -60,6 +70,7 @@ export const AboutScreen = props => {
           facilisis elementum nulla, ullamcorper venenatis lacus finibus sed.
           Duis faucibus tempus risus, at vehicula elit pharetra at.
         </Text>
+        <Space height={16} />
         <Text>
           Sed vel lorem semper, vestibulum ante non, rutrum libero. Proin
           feugiat molestie urna sed euismod. Duis sit amet lacus placerat,

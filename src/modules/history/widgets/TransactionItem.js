@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.secondary,
     height: 48,
     width: 48,
     borderRadius: 48,

@@ -3,7 +3,7 @@ import { Alert, ScrollView, Share } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useOnMount } from '~shared/hooks';
-import { withProviders } from '~shared/providers';
+import { useTheme, withProviders } from '~shared/providers';
 import { makeStyles } from '~shared/styles';
 import { Container, Icon, ListItem } from '~shared/widgets';
 
@@ -18,14 +18,11 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
-  greeting: {
-    fontSize: 24,
-    padding: theme.padding,
-  },
 }));
 
 export const ProfileScreen = withProviders([ProfileProvider], () => {
   const styles = useStyles();
+  const { theme } = useTheme();
   const { getText } = useLocale();
   const navigation = useNavigation();
   const { data: profile, loading, error, getProfile } = useProfile();
@@ -38,7 +35,9 @@ export const ProfileScreen = withProviders([ProfileProvider], () => {
 
   useOnMount(() => getProfile());
 
-  const getIcon = (name, type) => <Icon name={name} type={type} size={32} />;
+  const getIcon = (name, type) => (
+    <Icon name={name} type={type} size={32} color={theme.colors.text} />
+  );
 
   const onHandleShare = () =>
     Share.share({

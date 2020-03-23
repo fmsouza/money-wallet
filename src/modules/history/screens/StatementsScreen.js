@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    backgroundColor: theme.colors.background,
   },
   mainScrollContainer: {
     width: '100%',

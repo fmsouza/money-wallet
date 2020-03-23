@@ -36,16 +36,16 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontSize: 16,
-    color: theme.colors.lightText,
+    color: theme.colors.invertedText,
   },
   balance: {
     fontSize: 24,
     lineHeight: 24,
     fontWeight: 'bold',
-    color: theme.colors.lightText,
+    color: theme.colors.invertedText,
   },
   placeholder: {
-    backgroundColor: theme.colors.lightText,
+    backgroundColor: theme.colors.invertedText,
     width: 100,
     height: 20,
     borderRadius: 20,
@@ -76,7 +76,7 @@ export const Balance = withProviders([HistoryProvider], () => {
         <Icon.Button
           name={visible ? 'eye' : 'eye-off'}
           onPress={handleToggleVisibility}
-          color={theme.colors.lightText}
+          color={theme.colors.invertedText}
         />
       </View>
     </View>

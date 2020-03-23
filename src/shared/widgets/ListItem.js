@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import PropTypes from 'prop-types';
 import color from 'color';
+
 import { makeStyles } from '~shared/styles';
-import { Icon } from '~shared/widgets';
 
 const useStyles = makeStyles(theme => ({
   container: {

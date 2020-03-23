@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     width: theme.maxWidth - theme.margin * 2,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'flex-start', // eslint-disable-line sonarjs/no-duplicate-string
     justifyContent: 'space-evenly',
   },
   row: {

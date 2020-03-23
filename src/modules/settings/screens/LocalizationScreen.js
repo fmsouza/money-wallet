@@ -3,10 +3,11 @@ import { Picker, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Container, Icon, ListItem } from '~shared/widgets';
-import { currencies, languages } from '~shared/providers';
+import { currencies, languages, useTheme } from '~shared/providers';
 import { useLocale } from '~modules/settings/intl';
 
 export const LocalizationScreen = () => {
+  const { theme } = useTheme();
   const navigation = useNavigation();
   const {
     getText,
@@ -28,7 +29,9 @@ export const LocalizationScreen = () => {
 
   const getCurrencyLabel = cur => `${cur.label} (${cur.symbol})`;
 
-  const getIcon = (name, type) => <Icon name={name} type={type} size={32} />;
+  const getIcon = (name, type) => (
+    <Icon name={name} type={type} size={32} color={theme.colors.text} />
+  );
 
   const pickerStyle = { height: 32, width: 128 };
 

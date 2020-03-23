@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from 'react';
 import { Alert, ScrollView, Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { useDarkMode } from '~shared/providers';
+import { useDarkMode, useTheme } from '~shared/providers';
 import { Container, Icon, ListItem } from '~shared/widgets';
 import { useLocale } from '~modules/settings/intl';
 import { AboutScreen } from '~modules/support/screens';
@@ -11,6 +11,7 @@ import { LocalizationScreen } from './LocalizationScreen';
 import { SecurityScreen } from './SecurityScreen';
 
 export const SettingsScreen = () => {
+  const { theme } = useTheme();
   const { darkMode, enableDarkMode } = useDarkMode();
   const { getText } = useLocale();
   const navigation = useNavigation();
@@ -27,7 +28,9 @@ export const SettingsScreen = () => {
     Alert.alert('Not implemented', 'This action was not implemented yet.');
   };
 
-  const getIcon = (name, type) => <Icon name={name} type={type} size={32} />;
+  const getIcon = (name, type) => (
+    <Icon name={name} type={type} size={32} color={theme.colors.text} />
+  );
 
   return (
     <Container>

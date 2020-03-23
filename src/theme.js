@@ -11,8 +11,8 @@ export const Color = {
     .toString(),
   secondary: '#D4C2FC',
   background: '#f2f2f2',
-  darkText: '#1c1c1e',
-  lightText: '#f2f2f2',
+  text: '#1c1c1e',
+  invertedText: '#f2f2f2',
   white: '#ffffff',
   black: '#000000',
   border: '#dddddd',
@@ -36,32 +36,35 @@ export const lightTheme = {
     },
     headerTitleStyle: {
       fontWeight: 'bold',
-      color: Color.lightText,
+      color: Color.invertedText,
     },
-    headerTintColor: Color.lightText,
+    headerTintColor: Color.invertedText,
   },
 };
+
+const darkBg = '#202125';
+const evenDarkerBg = color(darkBg)
+  .darken(0.4)
+  .hex()
+  .toString();
 
 export const darkTheme = {
   ...lightTheme,
   colors: {
     ...lightTheme.colors,
-    background: Color.black,
+    background: darkBg,
     text: Color.white,
     border: Color.white,
   },
   statusBar: {
     barStyle: 'light-content',
-    backgroundColor: color(Color.black)
-      .darken(0.4)
-      .hex()
-      .toString(),
+    backgroundColor: evenDarkerBg,
   },
   navbar: {
     headerStyle: {
       ...lightTheme.navbar.headerStyle,
-      backgroundColor: Color.black,
+      backgroundColor: evenDarkerBg,
     },
-    headerTintColor: Color.white,
+    headerTintColor: Color.invertedText,
   },
 };

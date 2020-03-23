@@ -107,7 +107,7 @@ export const OverviewScreen = withProviders([ProfileProvider], () => {
           <SwiperFlatList
             renderAll
             showPagination
-            paginationDefaultColor={theme.colors.lightText}
+            paginationDefaultColor={theme.colors.invertedText}
             paginationActiveColor={theme.colors.primaryDarker}>
             <SliderItem>
               <Text>Slide 1</Text>
