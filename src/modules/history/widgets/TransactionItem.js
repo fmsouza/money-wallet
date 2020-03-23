@@ -7,6 +7,7 @@ import { makeStyles } from '~shared/styles';
 import { Icon } from '~shared/widgets';
 
 import { useLocale } from '~modules/history/intl';
+import { getIconName } from '~modules/history/utils';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -51,31 +52,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const getIcon = category => {
-  switch (category) {
-    case 'transport':
-      return 'airport-shuttle';
-    case 'health':
-      return 'fitness-center';
-    case 'services':
-      return 'build';
-    case 'market':
-      return 'local-grocery-store';
-    case 'shopping':
-      return 'local-mall';
-    case 'restaurants':
-      return 'restaurant';
-    case 'travel':
-      return 'beach-access';
-    case 'education':
-      return 'library-books';
-    case 'electronics':
-      return 'devices-other';
-    default:
-      return 'build';
-  }
-};
-
 export const TransactionItem = ({ tx }) => {
   const styles = useStyles();
   const { theme } = useTheme();
@@ -85,7 +61,7 @@ export const TransactionItem = ({ tx }) => {
       <View style={styles.leading}>
         <View style={styles.iconWrapper}>
           <Icon
-            name={getIcon(tx.category)}
+            name={getIconName(tx.category)}
             size={24}
             color={theme.colors.white}
             type="md"

@@ -9,7 +9,7 @@ import { makeStyles } from '~shared/styles';
 import { Container, Icon } from '~shared/widgets';
 
 import { InsightsScreen, StatementsScreen } from '~modules/history/screens';
-import { Balance } from '~modules/history/widgets';
+import { Balance, LatestTransaction } from '~modules/history/widgets';
 
 import { useLocale } from '~modules/overview/intl';
 import { OperationItem, SliderItem } from '~modules/overview/widgets';
@@ -110,7 +110,7 @@ export const OverviewScreen = withProviders([ProfileProvider], () => {
             paginationDefaultColor={theme.colors.invertedText}
             paginationActiveColor={theme.colors.primaryDarker}>
             <SliderItem>
-              <Text>Slide 1</Text>
+              <LatestTransaction />
             </SliderItem>
             <SliderItem>
               <Text>Slide 2</Text>

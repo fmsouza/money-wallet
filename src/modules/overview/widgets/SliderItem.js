@@ -17,7 +17,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.colors.background,
     width: theme.maxWidth * 0.8,
     height: theme.maxWidth * 0.7,
-    padding: theme.padding * 2,
     borderRadius: 6,
     shadowRadius: 3,
     shadowOpacity: 0.25,
