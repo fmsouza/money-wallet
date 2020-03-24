@@ -54,7 +54,7 @@ export const darkTheme = {
     ...lightTheme.colors,
     background: darkBg,
     text: Color.white,
-    border: Color.white,
+    border: evenDarkerBg,
   },
   statusBar: {
     barStyle: 'light-content',
