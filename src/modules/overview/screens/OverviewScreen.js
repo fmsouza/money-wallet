@@ -9,7 +9,11 @@ import { makeStyles } from '~shared/styles';
 import { Container, Icon } from '~shared/widgets';
 
 import { InsightsScreen, StatementsScreen } from '~modules/history/screens';
-import { Balance, LatestTransaction } from '~modules/history/widgets';
+import {
+  Balance,
+  MonthExpenses,
+  LatestTransaction,
+} from '~modules/history/widgets';
 
 import { useLocale } from '~modules/overview/intl';
 import { OperationItem, SliderItem } from '~modules/overview/widgets';
@@ -113,11 +117,9 @@ export const OverviewScreen = withProviders([ProfileProvider], () => {
               onPress={() => navigation.navigate(StatementsScreen.route)}>
               <LatestTransaction />
             </SliderItem>
-            <SliderItem>
-              <Text>Slide 2</Text>
-            </SliderItem>
-            <SliderItem>
-              <Text>Slide 3</Text>
+            <SliderItem
+              onPress={() => navigation.navigate(StatementsScreen.route)}>
+              <MonthExpenses />
             </SliderItem>
           </SwiperFlatList>
         </View>

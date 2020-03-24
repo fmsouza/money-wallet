@@ -10,6 +10,7 @@ import { withProviders } from '~shared/providers';
 import { useLocale } from '~modules/history/intl';
 import { HistoryProvider, useHistory } from '~modules/history/state';
 import { Balance, TransactionItem } from '~modules/history/widgets';
+import { isBefore } from 'date-fns';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -42,11 +43,15 @@ export const StatementsScreen = withProviders([HistoryProvider], () => {
     <RefreshControl refreshing={loading} onRefresh={getHistory} />
   );
 
+  const sortedStatements = statements.sort((st1, st2) =>
+    isBefore(new Date(st2.timestamp), new Date(st1.timestamp)),
+  );
+
   return (
     <Container style={styles.container}>
       <FlatList
         style={styles.mainScrollContainer}
-        data={statements}
+        data={sortedStatements}
         refreshControl={refreshControl}
         renderItem={({ item }) => <TransactionItem key={item.id} tx={item} />}
         keyExtractor={item => item.id}
