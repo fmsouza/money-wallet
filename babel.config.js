@@ -10,6 +10,7 @@ module.exports = {
           '~app': './src',
           '~shared': './src/shared',
           '~modules': './src/modules',
+          '~pkg': './package.json',
         },
       },
     ],
